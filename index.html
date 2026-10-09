@@ -1,766 +1,336 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/newcss.css" />
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pema Dolker — Software Engineer</title>
+  <meta name="description" content="Pema Dolker, final-year Software Engineering student (Software Security) at the College of Science and Technology, Bhutan. Cloud, DevOps, Kubernetes and web security." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <script>
+    try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
 
-  <body oncontextmenu="return false">
-    <header class="header" id="header">
-      <nav class="nav container">
-        <a href="#" class="nav__logo">Pema Dolker</a>
-        <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list grid">
-            <li class="nav__item">
-              <a href="#home" class="nav__link active-link">
-                <i class="uil uil-estate nav__icon"></i>Home
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#about" class="nav__link">
-                <i class="uil uil-user nav__icon"></i>About
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#skills" class="nav__link">
-                <i class="uil uil-file-alt nav__icon"></i>Skills
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#qualification" class="nav__link">
-                <i class="uil uil-briefcase-alt nav__icon"></i>Qualification
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#portfolio" class="nav__link">
-                <i class="uil uil-scenery nav__icon"></i>Projects
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#contact" class="nav__link">
-                <i class="uil uil-message nav__icon"></i>Contact-Me
-              </a>
-            </li>
-          </ul>
-          <i class="uil uil-times nav__close" id="nav-close"></i>
-        </div>
-        <div class="nav__btns">
-          <!-- Theme change button -->
-          <i class="uil uil-moon change-theme" id="theme-button"></i>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
 
-          <div class="nav__toggle" id="nav-toggle">
-            <i class="uil uil-apps"></i>
-          </div>
-        </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a href="#top" class="nav__logo" aria-label="Pema Dolker, back to top">pema<span>.</span>dolker</a>
+      <nav aria-label="Main">
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
-    </header>
-    <!-- main-->
-
-    <main class="main">
-      <!--========================= Home =====================-->
-
-      <section class="home section" id="home">
-        <div class="home__container container grid">
-          <div class="home__content grid">
-            <div class="home__social">
-              <a
-                href="https://www.linkedin.com/in/pema-dolker-591204326/"
-                target="_blank"
-                class="home__social-icon"
-              >
-                <i class="uil uil-linkedin-alt home__icon"></i>
-              </a>
-
-              <a
-                href="https://github.com/pemadolker"
-                target="_blank"
-                class="home__social-icon"
-              >
-                <i class="uil uil-github-alt home__icon"></i>
-              </a>
-            </div>
-            <div class="home__img">
-              <svg
-                class="home__blob"
-                viewBox="0 0 200 187"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-              >
-                <mask id="mask0" mask-type="alpha">
-                  <path
-                    d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-                      130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-                      97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-                      0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-                  />
-                </mask>
-                <g mask="url(#mask0)">
-                  <path
-                    d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-                      165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-                      129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-                     -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-                  />
-                  <image
-                    class="home__blob-img"
-                    x="-79"
-                    y="-46"
-                    xlink:href="assets/img/Pro.jpg"
-                  />
-                </g>
-              </svg>
-            </div>
-            <div class="home__data">
-              <h1 class="home__title">Hi, I'm Pema Dolker</h1>
-              <h3 class="home__subtitle">
-                Software Engineering Student
-              </h3>
-              <p class="home__description">
-                An undergraduate software engineering student at
-                <strong> College of Science and Technology</strong>, Bhutan.
-              </p>
-              <a href="#contact" class="button button--flex">
-                Contact me<i class="uil uil-message button__icon"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="home__scroll">
-            <a href="#about" class="home__scroll-button button--flex">
-              <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-              <span class="home__scroll-name">Scroll down</span>
-              <i class="uil uil-arrow-down home__scroll-arrow"></i>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!--======================= About========================-->
-
-      <section class="about section" id="about">
-        <h2 class="section__title">About Me</h2>
-        <span class="section__subtitle">My introduction</span>
-
-        <div class="about__container container grid">
-          <img src="assets\img\about.jpg" alt="" class="about__img" />
-
-          <div class="about__data">
-            <p class="about__description">
-            Hi, I'm Pema Dolker, a Software engineering student majoring in Software Security. I have worked on various projects, including web development, automation, and database systems, and I am always eager to learn new technologies and improve my skills. My goal is to apply my technical skills and knowledge to develop innovative solutions that make a difference and I am excited to see where my journey takes me.
-
-
-            <div class="about__buttons">
-              <a download="" href="assets\PemaDolker_CV.docx.pdf" class="button button--flex">
-                Download CV<i class="fas fa-download button__icon"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!--===================== SKILLS =====================-->
-
-      <section class="skills section" id="skills">
-        <h2 class="section__title">Skills</h2>
-        <span class="section__subtitle">My technical level</span>
-
-        <div class="skills__container container grid">
-          <div>
-            <!--==================== Programming Languages =================-->
-            <div class="skills__content skills__open">
-              <div class="skills__header">
-                <i class="uil uil-brackets-curly skills__icon"></i>
-                <div>
-                  <h1 class="skills__title">Programming Languages</h1>
-                </div>
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Python</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">JavaScript</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">TypeScript</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">C++</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">SQL</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Bash</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">HTML/CSS</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!--==================== Web Development =================-->
-            <div class="skills__content skills__close">
-              <div class="skills__header">
-                <i class="uil uil-window skills__icon"></i>
-                <div>
-                  <h1 class="skills__title">Web Development</h1>
-                </div>
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">React.js</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Next.js</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Node.js</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">REST APIs</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">WebSockets</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Tailwind CSS</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!--==================== Databases =================-->
-            <div class="skills__content skills__close">
-              <div class="skills__header">
-                <i class="uil uil-database skills__icon"></i>
-                <div>
-                  <h1 class="skills__title">Databases</h1>
-                </div>
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">PostgreSQL</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">MongoDB</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Redis</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Supabase</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Prisma</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div>
-            <!--==================== DevOps &amp; Cloud =================-->
-            <div class="skills__content skills__close">
-              <div class="skills__header">
-                <i class="uil uil-cloud-database-tree skills__icon"></i>
-                <div>
-                  <h1 class="skills__title">DevOps &amp; Cloud</h1>
-                </div>
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Docker</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Kubernetes</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">AWS</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Linux</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Git/GitHub</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">GitHub Actions</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Jenkins</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">ELK Stack</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!--==================== Cybersecurity Tools =================-->
-            <div class="skills__content skills__close">
-              <div class="skills__header">
-                <i class="uil uil-shield-check skills__icon"></i>
-                <div>
-                  <h1 class="skills__title">Cybersecurity Tools</h1>
-                </div>
-                <i class="uil uil-angle-down skills__arrow"></i>
-              </div>
-
-              <div class="skills__list grid">
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Burp Suite</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Nmap</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Wireshark</h3>
-                  </div>
-                </div>
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name">Metasploit</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!--==================== Qualifications ==================-->
-
-      <section
-        class="qualification__section service__section"
-        id="qualification"
-      >
-        <h2 class="section__title">Qualification</h2>
-        <span class="section__subtitle">My personal journey</span>
-
-        <div
-          class="qualification__container container grid services__container"
-        >
-          <div class="qualification__tabs">
-            <div
-              class="qualification__button button--flex qualification__active"
-              data-target="#education"
-            >
-              <i class="uil uil-graduation-cap qualification__icon"></i>
-              Education
-            </div>
-          </div>
-
-          <div class="qualification__sections">
-            <!--====== Qualification Content 1 ======-->
-            <div
-              class="qualification__content qualifiation__active services__content"
-              data-content
-              id="education"
-            >
-              <!--====== Qualification 1 ======-->
-              <div class="qualification__data">
-                <div></div>
-
-                <div>
-                  <span class="qualification__rounder"></span>
-                  <span class="qualification__line"></span>
-                </div>
-                <div>
-                  <h3 class="qualification__title">Class 12th</h3>
-                  <span class="qualification__subtitle"
-                    >Yonten Kuenjung Academy <br /></span
-                  >
-                  <div class="qualification__calender">
-                    <i class="uil uil-calendar-alt"></i>
-                    -2022
-                  </div>
-                  <span
-                    class="button button--flex button--small button--link services__button"
-                  >
-                    View More
-                    <i class="uil uil-arrow-right button__icon"></i>
-                  </span>
-                  <div class="services__modal">
-                    <div class="services__modal-content">
-                      <h4 class="services__modal-title">
-                        Class 12th Summary :
-                      </h4>
-                      <i class="uil uil-times services__modal-close"></i>
-                      <ul class="services__modal-services grid">
-                        <li class="services__modal-service">
-                          <i
-                            class="uil uil-check-circle services__moda-icon"
-                          ></i>
-                          <p>
-                            Subjects studied: Physics, Chemistry, Maths,
-                            English , Dzo.
-                          </p>
-                        </li>
-                        <li class="services__modal-service">
-                          <i
-                            class="uil uil-check-circle services__moda-icon"
-                          ></i>
-                          <p>Scored 68%</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!--====== Qualification 2 ======-->
-              <div class="qualification__data">
-                <div>
-                  <h3 class="qualification__title">College</h3>
-                  <span class="qualification__subtitle"
-                    >College of Science and Technology, Rinchending</span
-                  >
-                  <div class="qualification__calender">
-                    <i class="uil uil-calendar-alt"></i>
-                    2023 - 2027
-                  </div>
-                  <span
-                    class="button button--flex button--small button--link services__button"
-                  >
-                    View More
-                    <i class="uil uil-arrow-right button__icon"></i>
-                  </span>
-                  <div class="services__modal">
-                    <div class="services__modal-content">
-                      <h4 class="services__modal-title">College Summary :</h4>
-                      <i class="uil uil-times services__modal-close"></i>
-                      <ul class="services__modal-services grid">
-                        <li class="services__modal-service">
-                          <i
-                            class="uil uil-check-circle services__modal-icon"
-                          ></i>
-                          <p>
-                            Studying core subjects in software engineering - Statistics, DataBase management, Cyber security and web developmemt.
-                          </p> 
-                        </li>
-                       
-                        <li class="services__modal-service">
-                          <i
-                            class="uil uil-check-circle services__modal-icon"
-                          ></i>
-                          <p>
-                            Won a hackathon as part of a team at the Innovation Bootcamp held at Gedu College, securing a cash prize of Nu. 200,000.
-                          </p>
-                        </li>
-                      
-                        
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <span class="qualification__rounder"></span>
-                  <!--<span class="qualification__line"></span>-->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!--=================== Portfolio ===================-->
-      <section class="portfolio section" id="portfolio">
-        <h2 class="section__title">Projects</h2>
-        <span class="section__subtitle">Most recent work</span>
-
-        <div class="portfolio__container container swiper-container">
-          <div class="swiper-wrapper">
-            <!-- ------------------------portfollio 1-------------------- -->
-            <div class="portfolio__content grid swiper-slide">
-              <img src="assets/img/portfolio5.png" class="portfolio__img" />
-
-              <div class="portfolio__data">
-                <h3 class="portfolio__title">
-                  Pokédex
-                </h3>
-                <p class="portfolio__description">
-                  Developed a  functional Pokedex webpage using React, which allows users to search for Pokémon by name, view detailed information such as type, abilities, and stats, and keep track of the Pokémon they've caught. Used the PokeAPI for fetching data and Zustand library for state management.
-                </p>
-                <a
-                  href="https://github.com/pemadolker/02230294web101_PA2"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  GitHub Repository
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-                <a
-                href="https://fluffy-sunburst-171efc.netlify.app/"
-                class="button button--flex button--small portfolio__button"
-              >
-                See Live
-                <i class="uil uil-external-link-alt button__icon"></i>
-              </a>
-              </div>
-            </div>
-            <!-- ------------------------portfollio 2-------------------- -->
-
-            <div class="portfolio__content grid swiper-slide">
-              <img src="assets/img/portfolio2.png" class="portfolio__img" />
-
-              <div class="portfolio__data">
-                <h3 class="portfolio__title">
-                 Tellonym clone 
-                </h3>
-                <p class="portfolio__description">
-                I'm currently working on a team project to develop a full-stack web application replicating Tellonym's MVP, focusing on anonymous messaging. My main task is developing the inbox page for viewing and replying to tells. We're using React for the front-end and Hono for the back-end, with seamless API integration and secure authentication. We're also trying to implement pagination and real-time updates with WebSockets. 
-                </p>
-                <a
-                  href="https://github.com/C-gyeltshen/FrontEnd_tellonym"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  GitHub Repository(Front End)
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-                <a
-                href="https://github.com/C-gyeltshen/BackEnd_Tell0nym"
-                class="button button--flex button--small portfolio__button"
-              >
-                GitHub Repository(Back End)
-                <i class="uil uil-external-link-alt button__icon"></i>
-              </a>
-              
-              </div>
-            </div>
-
-            <!-- ------------------------portfollio 3-------------------- -->
-            <div class="portfolio__content grid swiper-slide">
-              <img src="assets/img/portfolio3.png" class="portfolio__img" />
-
-              <div class="portfolio__data">
-                <h3 class="portfolio__title">Web Design and User Flow Management</h3>
-                <p class="portfolio__description">
-                 As part of a competitive bootcamp project, I led the design of web pages and developed user flow for our team's submission. Despite a tight schedule, I successfully delivered a user-centric design that met the team's (client's) needs and expectations. The project was well-received, resulting in our team winning the competition. This experience showcased my ability to work efficiently under pressure, deliver quality results, and achieve client satisfaction.
-                </p>
-               
-                <a
-                  href="https://www.figma.com/proto/vQibGRZ7VOz0KGrjt5HKn8/Untitled?node-id=105-2&starting-point-node-id=105%3A2&t=0EX2ZqpWlXs19RJQ-1"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  See Live
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-              </div>
-            </div>
-            <!-- ------------------------portfollio 4-------------------- -->
-            <!-- <div class="portfolio__content grid swiper-slide">
-              <img src="assets/img/portfolio3.png" class="portfolio__img" />
-
-              <div class="portfolio__data">
-                <h3 class="portfolio__title">Language Translator</h3>
-                <p class="portfolio__description">
-                  This language translator web app is a user-friendly tool built
-                  with HTML, CSS, and JavaScript. It leverages Google Translate
-                  API to seamlessly translate text between multiple languages.
-                  The app features a simple interface, ensuring smooth
-                  performance across devices..
-                </p>
-                <a
-                  href="https://github.com/Venkateeshh/Js-Language-Translator"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  GitHub Repository
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-                <a
-                  href="https://venkateeshh.github.io/Js-Language-Translator/"
-                  class="button button--flex button--small portfolio__button"
-                >
-                  See Live
-                  <i class="uil uil-external-link-alt button__icon"></i>
-                </a>
-              </div>
-            </div> -->
-
-          <!-- add arrows -->
-          <div class="swiper-button-next">
-            <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-          </div>
-          <div class="swiper-button-prev">
-            <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
-          </div>
-          <!-- add pagination -->
-          <div class="swiper-pagination"></div>
-        </div>
-      </section>
-
-      <!--===================== Contact Me =====================-->
-      <section class="contact section" id="contact">
-        <h2 class="section__title">Contact Me</h2>
-        <span class="section__subtitle">Get in touch</span>
-
-        <div class="contact__container container grid">
-          <div>
-            <div class="contact__information">
-              <i class="uil uil-calling contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title">Contact Me</h3>
-                <span class="contact__subtitle"
-                  ><a href="tel:6362243314"></a>17508661</span
-                >
-              </div>
-            </div>
-
-            <div class="contact__information">
-              <i class="uil uil-envelope-minus contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title">Email</h3>
-                <span class="contact__subtitle"
-                  >02230294.cst@rub.edu.bt</span
-                >
-              </div>
-            </div>
-
-            <div class="contact__information">
-              <i class="uil uil-map-marker contact__icon"></i>
-
-              <div>
-                <h3 class="contact__title">Location</h3>
-                <span class="contact__subtitle"
-                  >Phuentsholing, Chukha, Bhutan</span
-                >
-              </div>
-            </div>
-          </div>
-
-        
-        </div>
-      </section>
-    </main>
-
-    <!--================== Footer ===============-->
-    <footer class="footer">
-      <div class="footer__bg">
-        <div class="footer__container container grid">
-          <div>
-            <h1 class="footer__title">Pema Dolker</h1>
-            <span class="footer__subtitle"
-              >Software Engineering Student</span
-            >
-          </div>
-
-          <ul class="footer__links">
-            <li>
-              <a href="#qualification" class="footer__link">Qualification</a>
-            </li>
-            <li>
-              <a href="#portfolio" class="footer__link">Portfolio</a>
-            </li>
-            <li>
-              <a href="#contact" class="footer__link">Contact-Me</a>
-            </li>
-          </ul>
-
-          <div class="footer__socials">
-            <a
-              href="https://www.instagram.com/dov1lker/"
-              class="footer__social"
-              target="__blank"
-            >
-            <i class="fa-brands fa-instagram"></i>
-            </a>
-
-            <a
-              href="https://x.com/Dolker24"
-              target="__blank"
-              class="footer__social"
-            >
-            <i class="fa-brands fa-x-twitter"></i>
-            </a>
-          </div>
-        </div>
-
-        <p class="footer__copy">&#169; Pema Dolker. All right reserved</p>
+      <div class="nav__actions">
+        <button class="icon-btn" id="theme-toggle" aria-label="Switch colour theme">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button class="icon-btn nav__menu-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
       </div>
-    </footer>
+    </div>
+  </header>
 
-    <!--================== SCROLL TOP ==================-->
-    <a href="#" class="scrollup" id="scroll-up">
-      <i class="uil uil-arrow-up scrollup__icon"></i>
-    </a>
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero wrap" id="top">
+      <div class="hero__text">
+        <p class="hero__status"><span class="dot" aria-hidden="true"></span>Final-year student, graduating 2027</p>
+        <h1 class="hero__name">Pema<br />Dolker</h1>
+        <p class="hero__lede">
+          Software engineer in training, specialising in <strong>software security</strong>.
+          I containerise apps, wire up CI/CD pipelines, run them on Kubernetes,
+          and then try to break them.
+        </p>
+        <div class="hero__cta">
+          <a href="#work" class="btn btn--solid">See my work</a>
+          <a href="assets/Pema_Dolker_CV.pdf" class="btn btn--ghost" download>Download CV</a>
+        </div>
+      </div>
 
-    <script type="text/javascript" src="assets/swiper-bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/2205d59d52.js" crossorigin="anonymous"></script>
-    <script src="assets/ptj.js"></script>
-  </body>
+      <div class="term" id="terminal" aria-label="Interactive terminal. Type help to see commands.">
+        <div class="term__bar">
+          <span class="term__lights" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="term__title">pema@cst: ~</span>
+        </div>
+        <div class="term__body" id="term-body" role="log" aria-live="polite"></div>
+        <form class="term__input" id="term-form" autocomplete="off">
+          <label for="term-in" class="term__prompt"><span class="u">pema</span>@cst:~$</label>
+          <input id="term-in" type="text" spellcheck="false" autocapitalize="off" aria-label="Type a command" />
+        </form>
+        <div class="term__chips" aria-label="Quick commands">
+          <button type="button" data-cmd="whoami">whoami</button>
+          <button type="button" data-cmd="skills">skills</button>
+          <button type="button" data-cmd="kubectl get pods">kubectl get pods</button>
+          <button type="button" data-cmd="nmap pema.dev">nmap pema.dev</button>
+          <button type="button" data-cmd="help">help</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section wrap about" id="about">
+      <figure class="about__photo">
+        <img src="assets/img/pema.jpg" alt="Portrait of Pema Dolker" width="800" height="1067" loading="lazy" />
+      </figure>
+      <div class="about__text">
+        <h2 class="h2">About me</h2>
+        <p>
+          I'm a fourth-year B.E. Software Engineering student at the
+          <strong>College of Science and Technology</strong>, Royal University of Bhutan,
+          majoring in Software Security.
+        </p>
+        <p>
+          Most of my time goes into the space where development meets operations and security:
+          building full-stack apps, packaging them into containers, automating how they ship,
+          and then testing them the way an attacker would. At GovTech Bhutan I tested systems
+          still in development and reported the defects and edge cases to the developers.
+        </p>
+        <p>
+          Outside class I do PortSwigger labs and CTFs. I was also on the team that won the
+          2024 Innovation Bootcamp.
+        </p>
+        <dl class="facts">
+          <div><dt>Based in</dt><dd>Phuentsholing, Bhutan</dd></div>
+          <div><dt>Focus</dt><dd>Cloud, DevOps, web security</dd></div>
+          <div><dt>Degree</dt><dd>B.E. Software Engineering, 2023–2027</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="section wrap" id="work">
+      <div class="section__head">
+        <h2 class="h2">Selected work</h2>
+        <p class="section__intro">Things I've built and shipped, from infrastructure up to the interface.</p>
+      </div>
+
+      <article class="project project--feature">
+        <div class="project__meta">
+          <span class="project__year">2025</span>
+          <h3 class="project__title">Containerised app with automated delivery</h3>
+          <p>
+            Took a React, Node and PostgreSQL app and packaged every part of it into Docker containers.
+            Built the CI/CD pipeline with GitHub Actions and Jenkins, so every push gets built and tested automatically.
+            Then deployed a related workload on a three-node Kubernetes cluster.
+          </p>
+          <ul class="tags"><li>Docker</li><li>Kubernetes</li><li>GitHub Actions</li><li>Jenkins</li><li>Linux</li></ul>
+          <a class="link" href="https://github.com/pemadolker" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+        <ol class="pipeline" aria-label="Pipeline stages">
+          <li><span>git push</span><small>code lands on main</small></li>
+          <li><span>build</span><small>Docker images for web, API, DB</small></li>
+          <li><span>test</span><small>GitHub Actions and Jenkins jobs</small></li>
+          <li><span>ship</span><small>image pushed to registry</small></li>
+          <li><span>deploy</span><small>rolled out on a 3-node cluster</small></li>
+        </ol>
+      </article>
+
+      <div class="project-grid">
+        <article class="project">
+          <span class="project__year">2025</span>
+          <h3 class="project__title">Sakura Notes</h3>
+          <p>A full-stack blogging platform with Google sign-in and social features, backed by Supabase and deployed on Vercel.</p>
+          <ul class="tags"><li>React</li><li>Vite</li><li>Supabase</li><li>Vercel</li></ul>
+          <a class="link" href="https://github.com/pemadolker" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
+
+        <article class="project">
+          <span class="project__year">2025</span>
+          <h3 class="project__title">Real-time quiz platform</h3>
+          <p>Hosts create a room with a unique join code, and players join the game live over WebSockets.</p>
+          <ul class="tags"><li>React</li><li>Node.js</li><li>WebSockets</li></ul>
+          <a class="link" href="https://github.com/pemadolker" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
+
+        <article class="project">
+          <span class="project__year">2024</span>
+          <h3 class="project__title">Innovation Bootcamp: web design and user flow</h3>
+          <p>I led the page design and user flow for our team's entry on a tight schedule. We won the bootcamp and a Nu. 200,000 prize.</p>
+          <ul class="tags"><li>Figma</li><li>UX</li><li>Prototyping</li></ul>
+          <a class="link" href="https://www.figma.com/proto/vQibGRZ7VOz0KGrjt5HKn8/Untitled?node-id=105-2&amp;starting-point-node-id=105%3A2&amp;t=0EX2ZqpWlXs19RJQ-1" target="_blank" rel="noopener">Open prototype</a>
+        </article>
+      </div>
+
+      <details class="earlier">
+        <summary>Earlier projects</summary>
+        <ul>
+          <li>
+            <strong>Pokédex</strong>: Search Pokémon, view their stats and track the ones you've caught. Built with React, PokeAPI and Zustand.
+            <a class="link" href="https://fluffy-sunburst-171efc.netlify.app/" target="_blank" rel="noopener">Live site</a>
+            <a class="link" href="https://github.com/pemadolker/02230294web101_PA2" target="_blank" rel="noopener">Code</a>
+          </li>
+          <li>
+            <strong>Tellonym clone</strong>: A team build of an anonymous messaging app with React and Hono. I built the inbox for reading and replying to messages.
+            <a class="link" href="https://github.com/C-gyeltshen/FrontEnd_tellonym" target="_blank" rel="noopener">Front end</a>
+            <a class="link" href="https://github.com/C-gyeltshen/BackEnd_Tell0nym" target="_blank" rel="noopener">Back end</a>
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section wrap" id="skills">
+      <div class="section__head">
+        <h2 class="h2">Skills</h2>
+        <p class="section__intro">What I work with, grouped the way I use it.</p>
+      </div>
+
+      <div class="skills">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <ul><li>Python</li><li>JavaScript</li><li>TypeScript</li><li>C++</li><li>SQL</li><li>Bash</li><li>HTML/CSS</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Web</h3>
+          <ul><li>React</li><li>Next.js</li><li>Node.js</li><li>REST APIs</li><li>WebSockets</li><li>Tailwind CSS</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Data</h3>
+          <ul><li>PostgreSQL</li><li>MongoDB</li><li>Redis</li><li>Supabase</li><li>Prisma</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Cloud and DevOps</h3>
+          <ul><li>Docker</li><li>Kubernetes</li><li>AWS</li><li>Linux</li><li>Git</li><li>GitHub Actions</li><li>Jenkins</li><li>ELK Stack</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Security</h3>
+          <ul><li>Burp Suite</li><li>Nmap</li><li>Wireshark</li><li>Metasploit</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Practice</h3>
+          <ul><li>Software testing</li><li>Project management</li><li>System design</li><li>Microservices</li></ul>
+        </div>
+      </div>
+
+      <div class="security">
+        <h3 class="h3">Security practice</h3>
+        <div class="security__grid">
+          <div>
+            <h4>Network</h4>
+            <p>Enumeration and traffic analysis with Nmap and Wireshark. Metasploit practice, and hardening services with ACLs, RBAC and TLS.</p>
+          </div>
+          <div>
+            <h4>Web</h4>
+            <p>PortSwigger labs with Burp Suite: prototype pollution, XXE, password-reset flaws and template injection.</p>
+          </div>
+          <div>
+            <h4>CTF and forensics</h4>
+            <p>2025 inter-college CTF. CORS, CSRF, authentication bypass, API security, SSRF and insider-threat forensics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STUDYING NOW ============ -->
+    <section class="section wrap now" id="now">
+      <div class="section__head">
+        <h2 class="h2">This semester</h2>
+        <p class="section__intro">The modules I'm taking right now in my final year.</p>
+      </div>
+      <ul class="modules">
+        <li><h3>Kubernetes</h3><p>Container orchestration, deployments, services and scaling across a cluster.</p></li>
+        <li><h3>Cloud computing</h3><p>Designing cloud-native systems on AWS: networking, compute, storage.</p></li>
+        <li><h3>IoT and smart integrated systems</h3><p>Connecting sensors, devices and services into one working system.</p></li>
+        <li><h3>Software testing</h3><p>Test planning, automation and quality assurance across the lifecycle.</p></li>
+        <li><h3>Project management</h3><p>Scoping, scheduling and running a software project as a team.</p></li>
+        <li><h3>Entrepreneurship</h3><p>Turning an idea into a product people need, and building the business case for it.</p></li>
+      </ul>
+    </section>
+
+    <!-- ============ JOURNEY ============ -->
+    <section class="section wrap" id="journey">
+      <div class="section__head">
+        <h2 class="h2">Journey</h2>
+        <p class="section__intro">Education, experience and recognition, newest first.</p>
+      </div>
+
+      <ol class="timeline">
+        <li>
+          <time>2025</time>
+          <div>
+            <h3>Inter-college CTF</h3>
+            <p>Competed on web, API and forensics challenges.</p>
+          </div>
+        </li>
+        <li>
+          <time>Sep – Nov 2024</time>
+          <div>
+            <h3>Software Engineering Intern</h3>
+            <p class="where">GovTech Agency, Department of Software Development</p>
+            <p>Tested systems still in development with the DSD team and reported defects and edge cases to developers. Worked inside the team's daily development and review cycle.</p>
+          </div>
+        </li>
+        <li>
+          <time>2024</time>
+          <div>
+            <h3>APNIC workshop</h3>
+            <p class="where">Cyber Security Month, GovTech</p>
+            <p>Completed a three-day APNIC workshop during my internship.</p>
+          </div>
+        </li>
+        <li>
+          <time>2024</time>
+          <div>
+            <h3>Innovation Bootcamp, winning team</h3>
+            <p class="where">Gedu College</p>
+            <p>Won the hackathon as a team and a Nu. 200,000 prize. I led the design and user flow.</p>
+          </div>
+        </li>
+        <li>
+          <time>2023 – 2027</time>
+          <div>
+            <h3>B.E. Software Engineering (Software Security)</h3>
+            <p class="where">College of Science and Technology, Royal University of Bhutan</p>
+            <p>Cybersecurity, DevOps, cloud computing, system design, microservices, databases, QA and IoT.</p>
+          </div>
+        </li>
+        <li>
+          <time>2021 – 2022</time>
+          <div>
+            <h3>Class XI and XII, Science</h3>
+            <p class="where">Yonten Kuenjung Academy</p>
+            <p>Physics, Chemistry, Mathematics, English and Dzongkha.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <h2 class="contact__title">Let's build something<br />secure together.</h2>
+        <p class="contact__intro">I'm open to internships, graduate roles and project collaborations. Email is the fastest way to reach me.</p>
+        <a class="contact__email" href="mailto:02230294.cst@rub.edu.bt">02230294.cst@rub.edu.bt</a>
+        <ul class="contact__list">
+          <li><span>Phone</span><a href="tel:+97517508661">+975 17508661</a></li>
+          <li><span>GitHub</span><a href="https://github.com/pemadolker" target="_blank" rel="noopener">github.com/pemadolker</a></li>
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/pema-dolker-591204326/" target="_blank" rel="noopener">in/pema-dolker</a></li>
+          <li><span>CV</span><a href="assets/Pema_Dolker_CV.pdf" download>Download PDF</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <p>© <span id="year">2026</span> Pema Dolker</p>
+    <p class="footer__links">
+      <a href="https://www.instagram.com/dov1lker/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/Dolker24" target="_blank" rel="noopener">X</a>
+      <a href="#top">Back to top</a>
+    </p>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
 </html>
