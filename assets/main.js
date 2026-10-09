@@ -1,100 +1,99 @@
 /* ==========================================================
-   Pema Dolker — notebook portfolio scripts
+   Pema Dolker — portfolio scripts
    ========================================================== */
 (() => {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const root = document.documentElement;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const y = $("#year");
   if (y) y.textContent = new Date().getFullYear();
 
   /* ==========================================================
-     Hand-drawn marks: wobbly boxes, a red-pen circle, a margin line.
-     Each element gets its own seed so the wobble stays the same
-     between reloads but differs from its neighbours.
+     Intro: the unlock. CSS runs the animation; JS just ends it.
      ========================================================== */
-  const NS = "http://www.w3.org/2000/svg";
-  const seeded = (seed) => () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
-  const j = (r, amt) => (r() - 0.5) * amt;
-
-  const wobblyLine = (r, x1, y1, x2, y2, amt) => {
-    const mx = (x1 + x2) / 2 + j(r, amt), my = (y1 + y2) / 2 + j(r, amt);
-    return `M${(x1 + j(r, amt)).toFixed(1)},${(y1 + j(r, amt)).toFixed(1)} Q${mx.toFixed(1)},${my.toFixed(1)} ${(x2 + j(r, amt)).toFixed(1)},${(y2 + j(r, amt)).toFixed(1)}`;
+  const intro = $("#intro");
+  let introTimer;
+  let startTerminal = () => {};
+  const endIntro = () => {
+    clearTimeout(introTimer);
+    root.classList.add("no-intro");
+    requestAnimationFrame(() => root.classList.add("revealed"));
+    try { sessionStorage.setItem("unlocked", "1"); } catch (e) {}
+    startTerminal();
   };
+  const playIntro = () => {
+    // restart the CSS animations by re-inserting the node
+    root.classList.remove("no-intro", "revealed");
+    const cur = $("#intro");
+    const fresh = cur.cloneNode(true);
+    cur.replaceWith(fresh);
+    fresh.querySelector("#intro-skip").addEventListener("click", endIntro);
+    window.scrollTo({ top: 0 });
+    introTimer = setTimeout(endIntro, 2750);
+  };
+  if (root.classList.contains("no-intro")) {
+    root.classList.add("revealed");
+  } else {
+    $("#intro-skip").addEventListener("click", endIntro);
+    introTimer = setTimeout(endIntro, 2750);
+  }
+  const replay = $("#replay");
+  if (replay) replay.addEventListener("click", () => { if (reduceMotion) return; playIntro(); });
 
-  const shapes = {
-    box(r, w, h) {
-      let d = "";
-      for (let pass = 0; pass < 2; pass++) {
-        const o = pass ? 1.2 : 0;
-        d += wobblyLine(r, -2 - o, 0, w + 3, o, 3) + " ";
-        d += wobblyLine(r, w + o, -2, w - o, h + 3, 3) + " ";
-        d += wobblyLine(r, w + 2, h + o, -3, h - o, 3) + " ";
-        d += wobblyLine(r, o, h + 2, -o, -3, 3) + " ";
-      }
-      return { d, color: "var(--pen)", width: 1.4 };
+  /* ==========================================================
+     The stack: tap a layer, see what I've done there
+     ========================================================== */
+  const LAYERS = {
+    code: {
+      title: "Code",
+      text: "Full-stack web apps: a blogging platform, live quiz rooms over WebSockets, a microservice auction platform and an Express API.",
+      tools: ["React", "Next.js", "Node.js", "Express", "WebSockets", "PostgreSQL", "MongoDB", "Redis", "Supabase", "Python", "TypeScript"],
     },
-    circle(r, w, h) {
-      const cx = w / 2, cy = h / 2 + 1, rx = w / 2 + 12, ry = h / 2 + 9;
-      const start = -2.6 + j(r, 0.3), turns = 1.12, steps = 48;
-      let d = "";
-      for (let i = 0; i <= steps; i++) {
-        const t = start + (i / steps) * Math.PI * 2 * turns;
-        const k = 1 + j(r, 0.05) + (i / steps) * 0.06;
-        const x = cx + Math.cos(t) * rx * k, yy = cy + Math.sin(t) * ry * k;
-        d += (i ? " L" : "M") + x.toFixed(1) + "," + yy.toFixed(1);
-      }
-      return { d, color: "var(--red)", width: 2 };
+    container: {
+      title: "Container",
+      text: "I package each part of an app into its own image. I've containerised a React, Node and PostgreSQL app, and run the auction platform's services together with Compose.",
+      tools: ["Docker", "Docker Compose", "Linux", "Bash"],
     },
-    vline(r, w, h) {
-      let d = `M3,4`, yy = 4;
-      while (yy < h - 4) { const ny = Math.min(h - 4, yy + 40); d += ` Q${(3 + j(r, 4)).toFixed(1)},${((yy + ny) / 2).toFixed(1)} ${(3 + j(r, 2)).toFixed(1)},${ny.toFixed(1)}`; yy = ny; }
-      return { d, color: "var(--pen)", width: 1.6 };
+    cluster: {
+      title: "Cluster",
+      text: "Dev, staging and production overlays with Kustomize on a three-node kind cluster. Currently working through a Certified Kubernetes Administrator course.",
+      tools: ["Kubernetes", "kubectl", "Kustomize", "Helm", "kind", "Minikube"],
+    },
+    cloud: {
+      title: "Cloud",
+      text: "AWS through DSO303: ECS on Fargate, IAM roles and policies, VPC networking and CloudWatch. I've shipped apps to Render and Vercel, with CI/CD on GitHub Actions and Jenkins.",
+      tools: ["AWS IAM", "ECS / Fargate", "VPC", "S3", "DynamoDB", "Elastic Beanstalk", "CloudWatch", "GitHub Actions", "Jenkins", "Render", "Vercel"],
+    },
+    security: {
+      title: "Security, around all of it",
+      text: "My major. CTFs, PortSwigger labs, least-privilege IAM, and guardrails that stop insecure Kubernetes config. Every layer inside this one is something I try to break.",
+      tools: ["Burp Suite", "Nmap", "Wireshark", "Metasploit", "ELK Stack"],
     },
   };
-
-  const sketchAll = () => {
-    $$("[data-sketch]").forEach((el, i) => {
-      const kind = el.dataset.sketch;
-      const w = el.offsetWidth, h = el.offsetHeight;
-      if (!w || !shapes[kind]) return;
-      let svg = el.querySelector(":scope > svg.sketch");
-      if (!svg) {
-        svg = document.createElementNS(NS, "svg");
-        svg.setAttribute("class", "sketch");
-        svg.setAttribute("aria-hidden", "true");
-        if (getComputedStyle(el).position === "static") el.style.position = "relative";
-        el.appendChild(svg);
-      }
-      const { d, color, width } = shapes[kind](seeded(1234 + i * 977), w, h);
-      svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
-      svg.innerHTML = `<path d="${d}" stroke="${color}" stroke-width="${width}"/>`;
-      if (kind === "vline") { svg.style.width = "8px"; svg.style.left = "0px"; svg.setAttribute("viewBox", `0 0 8 ${h}`); svg.style.transform = "translateX(-3px)"; }
-      if ("draw" in el.dataset && !el.dataset.drawn) {
-        const p = svg.querySelector("path");
-        const len = p.getTotalLength();
-        if (reduceMotion) { el.dataset.drawn = 1; return; }
-        svg.classList.add("sketch--draw");
-        p.style.strokeDasharray = len;
-        p.style.strokeDashoffset = len;
-        setTimeout(() => { p.style.strokeDashoffset = 0; el.dataset.drawn = 1; }, 600);
-      }
-    });
+  const panel = $("#stack-panel");
+  const setLayer = (name) => {
+    const L = LAYERS[name];
+    if (!L) return;
+    $$(".stack .lbl").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.layer === name)));
+    $$(".stack .ring").forEach((r) => r.classList.toggle("is-active", r.dataset.layer === name));
+    panel.innerHTML = `<h3>${L.title}</h3><p>${L.text}</p><ul class="tools">${L.tools.map((t) => `<li>${t}</li>`).join("")}</ul>`;
   };
-
-  // hide the arrow on a pipeline step that ends a wrapped row
-  const markRowEnds = () => {
-    const items = $$(".pipeline li");
-    items.forEach((li, i) => {
-      const next = items[i + 1];
-      li.classList.toggle("row-end", !!next && next.offsetTop > li.offsetTop + 4);
-    });
-  };
-  const ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
-  ready.then(() => { markRowEnds(); sketchAll(); });
-  let rt;
-  window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { markRowEnds(); sketchAll(); }, 150); });
+  $(".stack__rings").addEventListener("click", (e) => {
+    const hit = e.target.closest("[data-layer]");
+    if (hit) setLayer(hit.dataset.layer);
+  });
+  // arrow keys move between layer tabs
+  $(".stack__rings").addEventListener("keydown", (e) => {
+    const tabs = $$(".stack .lbl");
+    const i = tabs.indexOf(document.activeElement);
+    if (i < 0 || !["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft"].includes(e.key)) return;
+    e.preventDefault();
+    const next = tabs[(i + (e.key === "ArrowDown" || e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+    next.focus(); setLayer(next.dataset.layer);
+  });
+  setLayer("code");
 
   /* ==========================================================
      Terminal
@@ -145,7 +144,9 @@
           ["languages", "Python, JavaScript, TypeScript, C++, SQL, Bash"],
           ["web", "React, Next.js, Node.js, REST, WebSockets"],
           ["data", "PostgreSQL, MongoDB, Redis, Supabase"],
-          ["devops", "Docker, Kubernetes, AWS, Jenkins, GitHub Actions, ELK"],
+          ["devops", "Docker, Compose, Kubernetes, Kustomize, Helm"],
+          ["cloud", "AWS (IAM, ECS/Fargate, VPC, S3), Render, Vercel"],
+          ["ci/cd", "GitHub Actions, Jenkins"],
           ["security", "Burp Suite, Nmap, Wireshark, Metasploit"],
         ];
         rows.forEach(([k, v]) => print(`<span class="k">${k.padEnd(10)}</span>${v}`));
@@ -154,11 +155,12 @@
     projects: {
       desc: "things I've built",
       run: () => {
+        print('<span class="a">auction-platform</span>    microservices, Docker Compose (SWE303)');
         print('<span class="a">containerised-app</span>   React/Node/Postgres, CI/CD, 3-node k8s');
         print('<span class="a">sakura-notes</span>        blog platform  <a href="https://wabisabi-blog.vercel.app/" target="_blank" rel="noopener">wabisabi-blog.vercel.app</a>');
-        print('<span class="a">quiz-live</span>           Kahoot-style rooms over WebSockets  <a href="https://github.com/pemadolker/SS2025_SWE201_Kahoot" target="_blank" rel="noopener">repo</a>');
-        print('<span class="a">bootcamp-2024</span>       design + user flow, winning team');
-        print('<span class="d">Scroll to the work section for details.</span>');
+        print('<span class="a">quiz-live</span>           Kahoot-style rooms  <a href="https://github.com/pemadolker/SS2025_SWE201_Kahoot" target="_blank" rel="noopener">repo</a>');
+        print('<span class="a">render-deploy</span>       Express + Postgres, GitHub Actions (DSO101)');
+        print('<span class="a">waste-monitor</span>       sensor-based IoT');
       },
     },
     experience: {
@@ -166,7 +168,8 @@
       run: () => {
         print('<span class="a">Software Engineering Intern</span>  <span class="d">Sep – Nov 2024</span>');
         print("GovTech Agency, Department of Software Development");
-        print("Tested in-development systems and reported defects and edge cases to developers.");
+        print("Tested in-development systems, reported defects and edge cases,");
+        print("and took on CTF-based security work.");
       },
     },
     "kubectl get pods": {
@@ -179,6 +182,7 @@
           ["software-testing", "1/1", "Running", "0", "2mo"],
           ["project-mgmt", "1/1", "Running", "0", "2mo"],
           ["entrepreneurship", "1/1", "Running", "0", "2mo"],
+          ["cka-prep", "1/1", "Running", "3", "2mo"],
           ["sleep", "0/1", "CrashLoopBackOff", "42", "4y"],
         ];
         print('<span class="d">NAME                READY STATUS            RESTARTS AGE</span>');
@@ -323,12 +327,15 @@
     await exec(cmd);
   }
 
-  /* boot sequence: the one orchestrated moment on load */
-  (async () => {
+  /* boot sequence runs once, after the intro */
+  let booted = false;
+  startTerminal = () => { if (booted) return; booted = true; boot(); };
+  if (root.classList.contains("no-intro")) startTerminal();
+  async function boot() {
     print('<span class="d">Last login: today on ttys001 from Phuentsholing, Bhutan</span>');
     print('<span class="d">Type </span><span class="k">help</span><span class="d"> or click a command below.</span>');
     gap();
     await wait(700);
     await typeAndRun("whoami");
-  })();
+  }
 })();
