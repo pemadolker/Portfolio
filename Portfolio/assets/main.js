@@ -1,68 +1,100 @@
 /* ==========================================================
-   Pema Dolker — portfolio scripts
+   Pema Dolker — notebook portfolio scripts
    ========================================================== */
 (() => {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- year ---------- */
   const y = $("#year");
   if (y) y.textContent = new Date().getFullYear();
 
-  /* ---------- theme ---------- */
-  const root = document.documentElement;
-  const systemDark = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const currentTheme = () => root.dataset.theme || (systemDark() ? "dark" : "light");
-  $("#theme-toggle").addEventListener("click", () => {
-    const next = currentTheme() === "dark" ? "light" : "dark";
-    root.dataset.theme = next;
-    try { localStorage.setItem("theme", next); } catch (e) {}
-  });
+  /* ==========================================================
+     Hand-drawn marks: wobbly boxes, a red-pen circle, a margin line.
+     Each element gets its own seed so the wobble stays the same
+     between reloads but differs from its neighbours.
+     ========================================================== */
+  const NS = "http://www.w3.org/2000/svg";
+  const seeded = (seed) => () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+  const j = (r, amt) => (r() - 0.5) * amt;
 
-  /* ---------- mobile menu ---------- */
-  const menuBtn = $("#menu-toggle");
-  const links = $("#nav-links");
-  const setMenu = (open) => {
-    links.classList.toggle("is-open", open);
-    menuBtn.setAttribute("aria-expanded", String(open));
-    menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  const wobblyLine = (r, x1, y1, x2, y2, amt) => {
+    const mx = (x1 + x2) / 2 + j(r, amt), my = (y1 + y2) / 2 + j(r, amt);
+    return `M${(x1 + j(r, amt)).toFixed(1)},${(y1 + j(r, amt)).toFixed(1)} Q${mx.toFixed(1)},${my.toFixed(1)} ${(x2 + j(r, amt)).toFixed(1)},${(y2 + j(r, amt)).toFixed(1)}`;
   };
-  menuBtn.addEventListener("click", () => setMenu(!links.classList.contains("is-open")));
-  $$("a", links).forEach((a) => a.addEventListener("click", () => setMenu(false)));
 
-  /* ---------- nav border + active link ---------- */
-  const nav = $(".nav");
-  const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 10);
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
-  const navLinks = $$(".nav__links a");
-  const sections = navLinks.map((a) => $(a.getAttribute("href"))).filter(Boolean);
-  const spy = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        navLinks.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === "#" + e.target.id));
-      });
+  const shapes = {
+    box(r, w, h) {
+      let d = "";
+      for (let pass = 0; pass < 2; pass++) {
+        const o = pass ? 1.2 : 0;
+        d += wobblyLine(r, -2 - o, 0, w + 3, o, 3) + " ";
+        d += wobblyLine(r, w + o, -2, w - o, h + 3, 3) + " ";
+        d += wobblyLine(r, w + 2, h + o, -3, h - o, 3) + " ";
+        d += wobblyLine(r, o, h + 2, -o, -3, 3) + " ";
+      }
+      return { d, color: "var(--pen)", width: 1.4 };
     },
-    { rootMargin: "-45% 0px -50% 0px" }
-  );
-  sections.forEach((s) => spy.observe(s));
+    circle(r, w, h) {
+      const cx = w / 2, cy = h / 2 + 1, rx = w / 2 + 12, ry = h / 2 + 9;
+      const start = -2.6 + j(r, 0.3), turns = 1.12, steps = 48;
+      let d = "";
+      for (let i = 0; i <= steps; i++) {
+        const t = start + (i / steps) * Math.PI * 2 * turns;
+        const k = 1 + j(r, 0.05) + (i / steps) * 0.06;
+        const x = cx + Math.cos(t) * rx * k, yy = cy + Math.sin(t) * ry * k;
+        d += (i ? " L" : "M") + x.toFixed(1) + "," + yy.toFixed(1);
+      }
+      return { d, color: "var(--red)", width: 2 };
+    },
+    vline(r, w, h) {
+      let d = `M3,4`, yy = 4;
+      while (yy < h - 4) { const ny = Math.min(h - 4, yy + 40); d += ` Q${(3 + j(r, 4)).toFixed(1)},${((yy + ny) / 2).toFixed(1)} ${(3 + j(r, 2)).toFixed(1)},${ny.toFixed(1)}`; yy = ny; }
+      return { d, color: "var(--pen)", width: 1.6 };
+    },
+  };
 
-  /* ---------- pipeline runs once when it scrolls into view ---------- */
-  const pipe = $(".pipeline");
-  if (pipe) {
-    const stages = $$("li", pipe);
-    const run = () => {
-      pipe.classList.add("is-run");
-      stages.forEach((li, i) => setTimeout(() => li.classList.add("is-done"), reduceMotion ? 0 : 300 * (i + 1)));
-    };
-    const po = new IntersectionObserver((entries) => {
-      if (entries.some((e) => e.isIntersecting)) { run(); po.disconnect(); }
-    }, { threshold: 0.5 });
-    po.observe(pipe);
-  }
+  const sketchAll = () => {
+    $$("[data-sketch]").forEach((el, i) => {
+      const kind = el.dataset.sketch;
+      const w = el.offsetWidth, h = el.offsetHeight;
+      if (!w || !shapes[kind]) return;
+      let svg = el.querySelector(":scope > svg.sketch");
+      if (!svg) {
+        svg = document.createElementNS(NS, "svg");
+        svg.setAttribute("class", "sketch");
+        svg.setAttribute("aria-hidden", "true");
+        if (getComputedStyle(el).position === "static") el.style.position = "relative";
+        el.appendChild(svg);
+      }
+      const { d, color, width } = shapes[kind](seeded(1234 + i * 977), w, h);
+      svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+      svg.innerHTML = `<path d="${d}" stroke="${color}" stroke-width="${width}"/>`;
+      if (kind === "vline") { svg.style.width = "8px"; svg.style.left = "0px"; svg.setAttribute("viewBox", `0 0 8 ${h}`); svg.style.transform = "translateX(-3px)"; }
+      if ("draw" in el.dataset && !el.dataset.drawn) {
+        const p = svg.querySelector("path");
+        const len = p.getTotalLength();
+        if (reduceMotion) { el.dataset.drawn = 1; return; }
+        svg.classList.add("sketch--draw");
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+        setTimeout(() => { p.style.strokeDashoffset = 0; el.dataset.drawn = 1; }, 600);
+      }
+    });
+  };
+
+  // hide the arrow on a pipeline step that ends a wrapped row
+  const markRowEnds = () => {
+    const items = $$(".pipeline li");
+    items.forEach((li, i) => {
+      const next = items[i + 1];
+      li.classList.toggle("row-end", !!next && next.offsetTop > li.offsetTop + 4);
+    });
+  };
+  const ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  ready.then(() => { markRowEnds(); sketchAll(); });
+  let rt;
+  window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { markRowEnds(); sketchAll(); }, 150); });
 
   /* ==========================================================
      Terminal
@@ -123,8 +155,8 @@
       desc: "things I've built",
       run: () => {
         print('<span class="a">containerised-app</span>   React/Node/Postgres, CI/CD, 3-node k8s');
-        print('<span class="a">sakura-notes</span>        blogging platform, Google OAuth, Supabase');
-        print('<span class="a">quiz-live</span>           real-time multiplayer over WebSockets');
+        print('<span class="a">sakura-notes</span>        blog platform  <a href="https://wabisabi-blog.vercel.app/" target="_blank" rel="noopener">wabisabi-blog.vercel.app</a>');
+        print('<span class="a">quiz-live</span>           Kahoot-style rooms over WebSockets  <a href="https://github.com/pemadolker/SS2025_SWE201_Kahoot" target="_blank" rel="noopener">repo</a>');
         print('<span class="a">bootcamp-2024</span>       design + user flow, winning team');
         print('<span class="d">Scroll to the work section for details.</span>');
       },

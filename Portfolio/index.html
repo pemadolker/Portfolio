@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pema Dolker</title>
+  <meta name="description" content="Pema Dolker, final-year Software Engineering student (Software Security) at the College of Science and Technology, Bhutan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400&family=Nanum+Pen+Script&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top page">
+    <a href="#top" class="top__name hand">Pema Dolker</a>
+    <nav aria-label="Main">
+      <ul class="top__links">
+        <li><a href="#about">about</a></li>
+        <li><a href="#work">work</a></li>
+        <li><a href="#skills">skills</a></li>
+        <li><a href="#journey">journey</a></li>
+        <li><a href="#contact">say hi</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero page" id="top">
+      <div class="hero__text">
+        <p class="hand hero__hello">Kuzuzangpo la!</p>
+        <h1 class="hero__title">I'm Pema Dolker.</h1>
+        <p class="hero__lede">
+          Final-year software engineering student at the College of Science and Technology in Bhutan,
+          majoring in <span class="ring" data-sketch="circle" data-draw>software security</span>.
+          I build web apps, put them in containers, ship them through pipelines onto Kubernetes,
+          and then <mark class="hl">try to break them</mark>.
+        </p>
+        <p class="hero__links">
+          <a href="#work" class="pen-link">see what I've built</a>
+          <a href="assets/Pema_Dolker_CV.pdf" class="pen-link" download>grab my CV (pdf)</a>
+        </p>
+      </div>
+
+      <figure class="polaroid">
+        <span class="tape tape--tl" aria-hidden="true"></span>
+        <img src="assets/img/pema.jpg" alt="Pema Dolker in a blue gho" width="800" height="1067" />
+        <figcaption class="hand">me, final year, still curious</figcaption>
+      </figure>
+    </section>
+
+    <!-- ================= TERMINAL ================= -->
+    <section class="page printout-wrap" aria-label="Interactive terminal">
+      <p class="hand note note--terminal">
+        go on, type something <svg class="doodle-arrow" viewBox="0 0 80 50" aria-hidden="true"><path d="M4 6 C 30 4, 56 14, 66 40 M 56 34 L 67 42 L 72 30"/></svg>
+      </p>
+      <div class="printout" id="terminal">
+        <span class="tape tape--l" aria-hidden="true"></span>
+        <span class="tape tape--r" aria-hidden="true"></span>
+        <div class="printout__head">pema@cst:~ <span>(try: help)</span></div>
+        <div class="term__body" id="term-body" role="log" aria-live="polite"></div>
+        <form class="term__input" id="term-form" autocomplete="off">
+          <label for="term-in" class="term__prompt">pema@cst:~$</label>
+          <input id="term-in" type="text" spellcheck="false" autocapitalize="off" aria-label="Type a command" />
+        </form>
+        <div class="term__chips" aria-label="Quick commands">
+          <button type="button" data-cmd="whoami">whoami</button>
+          <button type="button" data-cmd="projects">projects</button>
+          <button type="button" data-cmd="kubectl get pods">kubectl get pods</button>
+          <button type="button" data-cmd="nmap pema.dev">nmap pema.dev</button>
+          <button type="button" data-cmd="help">help</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="sheet page" id="about">
+      <h2 class="margin-label hand">about me</h2>
+      <div class="sheet__body about">
+        <div class="about__text">
+          <p class="big">
+            I like the part of software most people skip: what happens after the code works.
+            How it gets packaged, how it ships, how it stays up, and how someone might get in.
+          </p>
+          <p>
+            Right now I'm in my fourth year of a B.E. in Software Engineering at CST, Royal University of Bhutan.
+            In 2024 I interned at GovTech Bhutan's Department of Software Development, testing systems
+            that were still being built and reporting the defects and edge cases to the developers.
+          </p>
+          <p>
+            Outside class you'll find me doing PortSwigger labs, playing CTFs, or turning a class project
+            into something that actually deploys.
+          </p>
+        </div>
+        <dl class="about__facts">
+          <div><dt class="hand">from</dt><dd>Phuentsholing, Bhutan</dd></div>
+          <div><dt class="hand">studying</dt><dd>B.E. Software Engineering, Software Security, 2023–2027</dd></div>
+          <div><dt class="hand">into</dt><dd>cloud, DevOps, web security, full-stack</dd></div>
+          <div><dt class="hand">proudest moment</dt><dd>winning the 2024 Innovation Bootcamp with my team</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ================= WORK ================= -->
+    <section class="sheet page" id="work">
+      <h2 class="margin-label hand">stuff I built</h2>
+      <div class="sheet__body">
+
+        <article class="card card--wide">
+          <span class="tape tape--tc" aria-hidden="true"></span>
+          <div class="card__top">
+            <h3 class="card__title">Containerised app with automated delivery</h3>
+            <span class="card__year hand">2025</span>
+          </div>
+          <p>
+            A React, Node and PostgreSQL app, with each part packaged into its own Docker container.
+            I set up CI/CD with GitHub Actions and Jenkins, so every push gets built and tested.
+            Then I ran a related workload on a three-node Kubernetes cluster.
+          </p>
+          <ol class="pipeline" aria-label="How a change gets shipped">
+            <li data-sketch="box">git push</li>
+            <li data-sketch="box">build images</li>
+            <li data-sketch="box">run tests</li>
+            <li data-sketch="box">push to registry</li>
+            <li data-sketch="box">deploy on k8s</li>
+          </ol>
+          <p class="card__stack">Docker, Kubernetes, GitHub Actions, Jenkins, Linux</p>
+        </article>
+
+        <div class="cards">
+          <article class="card card--tilt-l">
+            <span class="stamp-live hand" aria-hidden="true">live!</span>
+            <div class="card__top">
+              <h3 class="card__title">Sakura Notes</h3>
+              <span class="card__year hand">2025</span>
+            </div>
+            <p>A full-stack blogging platform with Google sign-in and social features. It uses Supabase for the backend and is deployed on Vercel.</p>
+            <p class="card__stack">React, Vite, Supabase, Vercel</p>
+            <a class="pen-link" href="https://wabisabi-blog.vercel.app/" target="_blank" rel="noopener">visit the blog</a>
+          </article>
+
+          <article class="card card--tilt-r">
+            <div class="card__top">
+              <h3 class="card__title">Live quiz rooms</h3>
+              <span class="card__year hand">2025</span>
+            </div>
+            <p>A Kahoot-style quiz. The host opens a room and gets a unique join code, and players join it live over WebSockets.</p>
+            <p class="card__stack">React, Node.js, WebSockets</p>
+            <a class="pen-link" href="https://github.com/pemadolker/SS2025_SWE201_Kahoot" target="_blank" rel="noopener">read the code</a>
+          </article>
+
+          <article class="card card--tilt-l2">
+            <div class="card__top">
+              <h3 class="card__title">Innovation Bootcamp entry</h3>
+              <span class="card__year hand">2024</span>
+            </div>
+            <p>I led the page design and user flow for our team on a tight deadline. We won, along with a Nu. 200,000 prize.</p>
+            <p class="card__stack">Figma, UX, prototyping</p>
+            <a class="pen-link" href="https://www.figma.com/proto/vQibGRZ7VOz0KGrjt5HKn8/Untitled?node-id=105-2&amp;starting-point-node-id=105%3A2&amp;t=0EX2ZqpWlXs19RJQ-1" target="_blank" rel="noopener">open the prototype</a>
+          </article>
+        </div>
+
+        <div class="older">
+          <p class="hand older__label">older stuff (be kind)</p>
+          <ul>
+            <li>
+              <strong>Pokédex</strong>: search Pokémon, see their stats and track the ones you've caught. React, PokeAPI, Zustand.
+              <a class="pen-link" href="https://fluffy-sunburst-171efc.netlify.app/" target="_blank" rel="noopener">live</a>
+              <a class="pen-link" href="https://github.com/pemadolker/02230294web101_PA2" target="_blank" rel="noopener">code</a>
+            </li>
+            <li>
+              <strong>Tellonym clone</strong>: a team build of an anonymous messaging app. I made the inbox. React and Hono.
+              <a class="pen-link" href="https://github.com/C-gyeltshen/FrontEnd_tellonym" target="_blank" rel="noopener">front end</a>
+              <a class="pen-link" href="https://github.com/C-gyeltshen/BackEnd_Tell0nym" target="_blank" rel="noopener">back end</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="sheet page" id="skills">
+      <h2 class="margin-label hand">what I use</h2>
+      <div class="sheet__body">
+        <div class="checklists">
+          <div class="checklist">
+            <h3 class="hand">languages</h3>
+            <ul><li>Python</li><li>JavaScript</li><li>TypeScript</li><li>C++</li><li>SQL</li><li>Bash</li><li>HTML/CSS</li></ul>
+          </div>
+          <div class="checklist">
+            <h3 class="hand">web</h3>
+            <ul><li>React</li><li>Next.js</li><li>Node.js</li><li>REST APIs</li><li>WebSockets</li><li>Tailwind CSS</li></ul>
+          </div>
+          <div class="checklist">
+            <h3 class="hand">data</h3>
+            <ul><li>PostgreSQL</li><li>MongoDB</li><li>Redis</li><li>Supabase</li><li>Prisma</li></ul>
+          </div>
+          <div class="checklist">
+            <h3 class="hand">cloud &amp; devops</h3>
+            <ul><li>Docker</li><li>Kubernetes</li><li>AWS</li><li>Linux</li><li>Git</li><li>GitHub Actions</li><li>Jenkins</li><li>ELK Stack</li></ul>
+          </div>
+          <div class="checklist">
+            <h3 class="hand">security tools</h3>
+            <ul><li>Burp Suite</li><li>Nmap</li><li>Wireshark</li><li>Metasploit</li></ul>
+          </div>
+          <div class="checklist">
+            <h3 class="hand">also good at</h3>
+            <ul><li>Software testing</li><li>Project management</li><li>System design</li><li>Microservices</li></ul>
+          </div>
+        </div>
+
+        <h3 class="sub">How I practise security</h3>
+        <div class="stickies">
+          <div class="sticky sticky--y">
+            <h4 class="hand">network</h4>
+            <p>Nmap and Wireshark for enumeration and traffic analysis. Metasploit practice. Hardening services with ACLs, RBAC and TLS.</p>
+          </div>
+          <div class="sticky sticky--p">
+            <h4 class="hand">web</h4>
+            <p>PortSwigger labs in Burp Suite: prototype pollution, XXE, password-reset flaws, template injection.</p>
+          </div>
+          <div class="sticky sticky--b">
+            <h4 class="hand">ctf &amp; forensics</h4>
+            <p>2025 inter-college CTF. CORS, CSRF, auth bypass, API security, SSRF and insider-threat forensics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= THIS SEMESTER ================= -->
+    <section class="sheet page" id="now">
+      <h2 class="margin-label hand">this semester</h2>
+      <div class="sheet__body">
+        <div class="ruled">
+          <p class="hand ruled__title">Modules I'm taking right now</p>
+          <ul>
+            <li><span class="hand">Kubernetes</span> <em>orchestrating containers, deployments and scaling</em></li>
+            <li><span class="hand">Cloud computing</span> <em>designing cloud-native systems on AWS</em></li>
+            <li><span class="hand">IoT &amp; smart integrated systems</span> <em>sensors, devices and services working together</em></li>
+            <li><span class="hand">Software testing</span> <em>test planning, automation and QA</em></li>
+            <li><span class="hand">Project management</span> <em>scoping, scheduling and running a team project</em></li>
+            <li><span class="hand">Entrepreneurship</span> <em>turning an idea into something people need</em></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= JOURNEY ================= -->
+    <section class="sheet page" id="journey">
+      <h2 class="margin-label hand">how I got here</h2>
+      <div class="sheet__body">
+        <ol class="journey" data-sketch="vline">
+          <li>
+            <span class="hand journey__when">2025</span>
+            <div><h3>Inter-college CTF</h3><p>Web, API and forensics challenges against other colleges.</p></div>
+          </li>
+          <li>
+            <span class="hand journey__when">Sep – Nov 2024</span>
+            <div>
+              <h3>Software Engineering Intern, GovTech Agency</h3>
+              <p class="where">Department of Software Development</p>
+              <p>Tested systems still in development with the DSD team and reported defects and edge cases to developers. Worked inside the team's daily development and review cycle.</p>
+            </div>
+          </li>
+          <li>
+            <span class="hand journey__when">2024</span>
+            <div><h3>APNIC workshop</h3><p>A three-day workshop during Cyber Security Month at GovTech.</p></div>
+          </li>
+          <li>
+            <span class="hand journey__when">2024</span>
+            <div><h3>Innovation Bootcamp, Gedu College</h3><p>Our team won the hackathon and a Nu. 200,000 prize. I led the design and user flow.</p></div>
+          </li>
+          <li>
+            <span class="hand journey__when">2023 – 2027</span>
+            <div>
+              <h3>B.E. Software Engineering (Software Security)</h3>
+              <p class="where">College of Science and Technology, Royal University of Bhutan</p>
+              <p>Cybersecurity, DevOps, cloud computing, system design, microservices, databases, QA and IoT.</p>
+            </div>
+          </li>
+          <li>
+            <span class="hand journey__when">2021 – 2022</span>
+            <div>
+              <h3>Class XI and XII, Science</h3>
+              <p class="where">Yonten Kuenjung Academy</p>
+              <p>Physics, Chemistry, Mathematics, English and Dzongkha.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT / POSTCARD ================= -->
+    <section class="page contact" id="contact">
+      <h2 class="margin-label hand">say hi</h2>
+      <div class="postcard">
+        <div class="postcard__msg">
+          <p class="hand postcard__greeting">Hello there,</p>
+          <p class="hand">
+            I'm looking for internships, graduate roles and good people to build things with.
+            If that sounds like you, write to me. I reply fast.
+          </p>
+          <p class="hand postcard__sign">Pema</p>
+        </div>
+        <div class="postcard__addr">
+          <div class="stamp" aria-hidden="true">
+            <div class="stamp__inner">
+              <svg viewBox="0 0 80 52"><path d="M2 48 L22 18 L32 30 L46 8 L62 34 L70 26 L78 48 Z" /><circle cx="64" cy="12" r="5"/></svg>
+              <span>BHUTAN</span>
+              <small>Nu. 20</small>
+            </div>
+          </div>
+          <div class="postmark" aria-hidden="true"><span>PHUENTSHOLING</span><span>2026</span></div>
+          <ul class="postcard__lines">
+            <li><span class="hand">email</span><a href="mailto:02230294.cst@rub.edu.bt">02230294.cst@rub.edu.bt</a></li>
+            <li><span class="hand">phone</span><a href="tel:+97517508661">+975 17508661</a></li>
+            <li><span class="hand">github</span><a href="https://github.com/pemadolker" target="_blank" rel="noopener">github.com/pemadolker</a></li>
+            <li><span class="hand">linkedin</span><a href="https://www.linkedin.com/in/pema-dolker-591204326/" target="_blank" rel="noopener">in/pema-dolker</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot page">
+    <p>© <span id="year">2026</span> Pema Dolker, Phuentsholing</p>
+    <p class="foot__links">
+      <a href="https://www.instagram.com/dov1lker/" target="_blank" rel="noopener">instagram</a>
+      <a href="https://x.com/Dolker24" target="_blank" rel="noopener">x</a>
+      <a href="assets/Pema_Dolker_CV.pdf" download>cv</a>
+      <a href="#top">back to top</a>
+    </p>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>
