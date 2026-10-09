@@ -1163,3 +1163,26 @@ img {
     bottom: -4.5rem;
   }
 }
+
+/*=========== Skills: two-column list inside each category ===========*/
+.skills__list {
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1rem;
+  row-gap: 1rem;
+}
+.skills__data {
+  background-color: var(--container-color);
+  border-left: 3px solid var(--first-color);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.skills__titles {
+  margin-bottom: 0;
+}
+.skills__close .skills__list {
+  row-gap: 0;
+}
+.skills__content {
+  margin-bottom: var(--mb-1-5);
+}
