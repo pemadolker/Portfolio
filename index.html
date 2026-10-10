@@ -72,26 +72,22 @@
       </div>
 
       <div class="stack" id="stack">
-        <p class="stack__hint">Tap a layer to see what I've done there</p>
-        <div class="stack__rings" role="tablist" aria-label="Layers of the stack">
-          <div class="ring ring--security" data-layer="security">
-            <button role="tab" class="lbl" data-layer="security" aria-selected="false"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5 11V7a5 5 0 0 1 10 0" /><rect x="2" y="10" width="16" height="12" rx="4" /></svg>security</button>
-            <div class="ring ring--cloud" data-layer="cloud">
-              <button role="tab" class="lbl" data-layer="cloud" aria-selected="false">cloud</button>
-              <div class="ring ring--cluster" data-layer="cluster">
-                <button role="tab" class="lbl" data-layer="cluster" aria-selected="false">cluster</button>
-                <div class="ring ring--container" data-layer="container">
-                  <button role="tab" class="lbl" data-layer="container" aria-selected="false">container</button>
-                  <div class="ring ring--code" data-layer="code">
-                    <button role="tab" class="lbl" data-layer="code" aria-selected="true">code</button>
-                    <span class="code-glyph" aria-hidden="true">&lt;/&gt;</span>
-                  </div>
-                </div>
-              </div>
+        <div class="stack__card">
+          <div class="stack__frame" data-layer="security">
+            <button class="stack__sec" data-layer="security" role="tab" aria-selected="false">
+              <svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5 11V7a5 5 0 0 1 10 0" /><rect x="2" y="10" width="16" height="12" rx="4" /></svg>
+              security, around every layer
+            </button>
+            <div class="slabs" role="tablist" aria-label="Layers I work across">
+              <button class="slab" data-layer="code" role="tab" aria-selected="true" style="--w: 58%"><span class="slab__name">Code</span><span class="slab__hint">apps &amp; APIs</span></button>
+              <button class="slab" data-layer="container" role="tab" aria-selected="false" style="--w: 72%"><span class="slab__name">Container</span><span class="slab__hint">Docker</span></button>
+              <button class="slab" data-layer="cluster" role="tab" aria-selected="false" style="--w: 86%"><span class="slab__name">Cluster</span><span class="slab__hint">Kubernetes</span></button>
+              <button class="slab" data-layer="cloud" role="tab" aria-selected="false" style="--w: 100%"><span class="slab__name">Cloud</span><span class="slab__hint">AWS &amp; CI/CD</span></button>
             </div>
           </div>
+          <div class="stack__panel" id="stack-panel" role="tabpanel" aria-live="polite"></div>
         </div>
-        <div class="stack__panel" id="stack-panel" role="tabpanel" aria-live="polite"></div>
+        <p class="stack__hint">Tap a layer to see what I've done there.</p>
       </div>
     </section>
 
@@ -167,25 +163,6 @@
         </article>
       </div>
 
-      <h3 class="h3 labs__title">Labs where I learn the infrastructure</h3>
-      <div class="labs">
-        <article class="lab">
-          <h4>AWS ECS and Fargate</h4>
-          <p>Set up an enrolment service: an ECS cluster and task definition, separate IAM execution and task roles with a least-privilege policy, private subnets, a security group and CloudWatch logs. I also tracked down an IAM <code>NoSuchEntity</code> error caused by a doubled policy ARN prefix.</p>
-          <p class="lab__note">Built in a simulated AWS environment for DSO303.</p>
-        </article>
-        <article class="lab">
-          <h4>Kubernetes with Kustomize</h4>
-          <p>One base with dev, staging and production overlays that run 1, 2 and 4 replicas, deployed on a three-node kind cluster.</p>
-          <p class="lab__note">Next up: an admission controller that blocks insecure YAML before it reaches the cluster.</p>
-        </article>
-        <article class="lab">
-          <h4>Innovation Bootcamp, 2024</h4>
-          <p>I led the page design and user flow for our team's entry. We won, along with a Nu. 200,000 prize.</p>
-          <a class="arrow-link" href="https://www.figma.com/proto/vQibGRZ7VOz0KGrjt5HKn8/Untitled?node-id=105-2&amp;starting-point-node-id=105%3A2&amp;t=0EX2ZqpWlXs19RJQ-1" target="_blank" rel="noopener">Open the prototype</a>
-        </article>
-      </div>
-
       <details class="older">
         <summary>Earlier projects</summary>
         <ul>
@@ -236,7 +213,7 @@
           </div>
           <div>
             <h3>Cloud and clusters</h3>
-            <p>Least-privilege IAM roles and policies on AWS, and Kubernetes guardrails that catch insecure configuration.</p>
+            <p>Least-privilege IAM roles and policies on AWS, and keeping Kubernetes configuration secure.</p>
           </div>
         </div>
       </div>
@@ -267,6 +244,7 @@
           <h3 class="h3 modules__title">Modules that shaped me</h3>
           <ul class="modules">
             <li><span>DSO101</span>DevOps and software delivery</li>
+            <li><span>DSO202</span>Kubernetes and container orchestration</li>
             <li><span>DSO303</span>Cloud-native solution design on AWS</li>
             <li><span>SWE303</span>Software engineering project: the auction platform</li>
             <li><span>WEB303</span>Web development</li>
@@ -274,23 +252,37 @@
             <li><span>SWE302</span>Software engineering</li>
             <li><span>IoT</span>Smart integrated systems</li>
           </ul>
-          <p class="modules__now">This semester: Kubernetes, cloud computing, IoT, software testing, project management and entrepreneurship.</p>
+          <p class="modules__now">This semester: cloud computing, IoT, software testing, project management and entrepreneurship.</p>
         </div>
       </div>
     </section>
 
     <!-- ================= CONTACT ================= -->
-    <section class="contact" id="contact">
-      <div class="wrap contact__inner">
-        <h2 class="contact__title">Let's build something,<br />then try to break it.</h2>
-        <p class="contact__lede">I'm looking for internships and graduate roles in cloud, DevOps, back-end and security. I reply fast.</p>
-        <a class="contact__mail" href="mailto:02230294.cst@rub.edu.bt">02230294.cst@rub.edu.bt</a>
-        <ul class="contact__list">
-          <li><span>Phone</span><a href="tel:+97517508661">+975 17508661</a></li>
-          <li><span>GitHub</span><a href="https://github.com/pemadolker" target="_blank" rel="noopener">pemadolker</a></li>
-          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/pema-dolker-591204326/" target="_blank" rel="noopener">pema-dolker</a></li>
-          <li><span>Based in</span>Phuentsholing, Bhutan</li>
-        </ul>
+    <section class="contact wrap" id="contact">
+      <div class="postcard">
+        <div class="postcard__msg">
+          <h2 class="postcard__title">Let's build something, then try to break it.</h2>
+          <p>I'm looking for internships and graduate roles in cloud, DevOps, back-end and security. If that sounds like your team, write to me. I reply fast.</p>
+          <p class="postcard__sign">Pema</p>
+        </div>
+        <div class="postcard__addr">
+          <div class="stamp" role="img" aria-label="Stamp celebrating 25 years of the College of Science and Technology, 2001 to 2026">
+            <div class="stamp__inner">
+              <span class="stamp__top">College of Science<br />and Technology</span>
+              <span class="stamp__num">25</span>
+              <span class="stamp__yrs">years</span>
+              <svg class="stamp__art" viewBox="0 0 100 26" aria-hidden="true"><path d="M2 24 L20 8 L30 16 L44 4 L60 18 L70 11 L98 24 Z" /><path class="bridge" d="M6 24 Q 50 6 94 24 M18 24 V17 M34 24 V12 M50 24 V10 M66 24 V12 M82 24 V17" /></svg>
+              <span class="stamp__dates">2001 – 2026</span>
+            </div>
+          </div>
+          <div class="postmark" aria-hidden="true"><span>PHUENTSHOLING</span><span>2026</span></div>
+          <ul class="postcard__lines">
+            <li><span>Email</span><a href="mailto:02230294.cst@rub.edu.bt">02230294.cst@rub.edu.bt</a></li>
+            <li><span>Phone</span><a href="tel:+97517508661">+975 17508661</a></li>
+            <li><span>GitHub</span><a href="https://github.com/pemadolker" target="_blank" rel="noopener">github.com/pemadolker</a></li>
+            <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/pema-dolker-591204326/" target="_blank" rel="noopener">in/pema-dolker</a></li>
+          </ul>
+        </div>
       </div>
     </section>
   </main>

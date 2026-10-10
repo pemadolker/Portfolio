@@ -58,7 +58,7 @@
     },
     cluster: {
       title: "Cluster",
-      text: "Dev, staging and production overlays with Kustomize on a three-node kind cluster. Currently working through a Certified Kubernetes Administrator course.",
+      text: "Learned Kubernetes in DSO202: pods, deployments, replicas and YAML manifests, plus dev, staging and production overlays with Kustomize on a three-node kind cluster. Now working through a Certified Kubernetes Administrator course.",
       tools: ["Kubernetes", "kubectl", "Kustomize", "Helm", "kind", "Minikube"],
     },
     cloud: {
@@ -67,26 +67,22 @@
       tools: ["AWS IAM", "ECS / Fargate", "VPC", "S3", "DynamoDB", "Elastic Beanstalk", "CloudWatch", "GitHub Actions", "Jenkins", "Render", "Vercel"],
     },
     security: {
-      title: "Security, around all of it",
-      text: "My major. CTFs, PortSwigger labs, least-privilege IAM, and guardrails that stop insecure Kubernetes config. Every layer inside this one is something I try to break.",
+      title: "Security, around every layer",
+      text: "My major. CTFs, PortSwigger labs, least-privilege IAM and secure configuration. Every layer inside this one is something I try to break.",
       tools: ["Burp Suite", "Nmap", "Wireshark", "Metasploit", "ELK Stack"],
     },
   };
   const panel = $("#stack-panel");
+  const tabs = $$(".stack [data-layer][role=tab]");
   const setLayer = (name) => {
     const L = LAYERS[name];
     if (!L) return;
-    $$(".stack .lbl").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.layer === name)));
-    $$(".stack .ring").forEach((r) => r.classList.toggle("is-active", r.dataset.layer === name));
+    tabs.forEach((b) => b.setAttribute("aria-selected", String(b.dataset.layer === name)));
+    $(".stack__frame").classList.toggle("is-active", name === "security");
     panel.innerHTML = `<h3>${L.title}</h3><p>${L.text}</p><ul class="tools">${L.tools.map((t) => `<li>${t}</li>`).join("")}</ul>`;
   };
-  $(".stack__rings").addEventListener("click", (e) => {
-    const hit = e.target.closest("[data-layer]");
-    if (hit) setLayer(hit.dataset.layer);
-  });
-  // arrow keys move between layer tabs
-  $(".stack__rings").addEventListener("keydown", (e) => {
-    const tabs = $$(".stack .lbl");
+  tabs.forEach((b) => b.addEventListener("click", () => setLayer(b.dataset.layer)));
+  $(".stack").addEventListener("keydown", (e) => {
     const i = tabs.indexOf(document.activeElement);
     if (i < 0 || !["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft"].includes(e.key)) return;
     e.preventDefault();
@@ -176,8 +172,7 @@
       desc: "check what's running",
       run: () => {
         const pods = [
-          ["studying-kubernetes", "1/1", "Running", "0", "2mo"],
-          ["studying-cloud", "1/1", "Running", "0", "2mo"],
+                    ["studying-cloud", "1/1", "Running", "0", "2mo"],
           ["studying-iot", "1/1", "Running", "0", "2mo"],
           ["software-testing", "1/1", "Running", "0", "2mo"],
           ["project-mgmt", "1/1", "Running", "0", "2mo"],
