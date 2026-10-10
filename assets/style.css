@@ -171,7 +171,7 @@ html:not(.no-intro):not(.revealed) .stack { opacity: 0; transform: translateY(18
   position: relative;
   border: 1.5px dashed #c9a9b1;
   border-radius: 18px 20px 16px 22px;
-  padding: 2.8rem 1.1rem 1.1rem;
+  padding: 1.1rem;
   transition: border-color .25s, background-color .25s;
 }
 .stack__frame.is-active { border-style: solid; border-color: var(--sumi); background: var(--sakura-2); }
@@ -210,10 +210,13 @@ html:not(.no-intro):not(.revealed) .stack { opacity: 0; transform: translateY(18
 
 /* ---------- about ---------- */
 .about { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 7vw, 6rem); align-items: center; padding-block: clamp(3rem, 7vw, 5.5rem); }
-.about__photo { position: relative; width: min(100%, 340px); aspect-ratio: 1; justify-self: center; }
+.about__photo { position: relative; width: min(100% - 3rem, 320px); aspect-ratio: 1; justify-self: center; margin-top: 2.5rem; }
 .about__photo img { position: absolute; inset: 9%; width: 82%; height: 82%; object-fit: cover; object-position: 50% 20%; border-radius: 50%; }
-.about__enso { position: absolute; inset: -4%; width: 108%; height: 108%; overflow: visible; transform: rotate(18deg); }
-.about__enso path { fill: none; stroke: var(--sumi); stroke-width: 9; stroke-linecap: round; filter: url(#brush); }
+.about__enso { position: absolute; inset: -4%; width: 108%; height: 108%; overflow: visible; }
+.about__enso path { stroke: var(--sumi); stroke-linecap: round; stroke-linejoin: round; filter: url(#brush); }
+.about__enso .ring { fill: none; stroke-width: 9; }
+.about__enso .ear { fill: var(--sumi); stroke-width: 4; }
+.about__enso .whisker { fill: none; stroke-width: 3; }
 .about__text { display: grid; gap: 1rem; max-width: 36rem; }
 .about__text .h2 { margin-bottom: .3rem; }
 .about__text p { color: var(--ash); font-size: 1.06rem; }

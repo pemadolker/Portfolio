@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pema Dolker</title>
-  <meta name="description" content="Pema Dolker, final-year Software Engineering student at the College of Science and Technology, Bhutan. Code, containers, Kubernetes, AWS and security." />
+  <meta name="description" content="Pema Dolker, final-year Software Engineering student at the College of Science and Technology, Bhutan. Web development, containers, Kubernetes and cloud." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -57,7 +57,6 @@
     <nav aria-label="Main">
       <ul class="top__links">
         <li><a href="#work">Work</a></li>
-        <li><a href="#security">Security</a></li>
         <li><a href="#journey">Journey</a></li>
         <li><a href="#contact" class="top__cta">Say hello</a></li>
       </ul>
@@ -71,9 +70,9 @@
         <p class="hero__kicker">Software engineer in the making, Bhutan</p>
         <h1 class="hero__name">Pema<br />Dolker</h1>
         <p class="hero__lede">
-          I build across the whole stack, from the code to the container to the cloud,
-          and I like finding the places where things quietly break.
-          Final-year at the College of Science and Technology.
+          Final-year software engineering student at the College of Science and Technology.
+          Curious about how things work, from the first line of code to the servers it runs on,
+          and always looking for the next thing to learn.
         </p>
         <p class="hero__actions">
           <a href="#work" class="btn btn--ink">See my work</a>
@@ -102,7 +101,6 @@
         </button>
         <div class="stack__card">
           <div class="stack__frame">
-            <button class="stack__sec" data-layer="security" role="tab" aria-selected="false">security, around every layer</button>
             <div class="slabs" role="tablist" aria-label="Layers I work across">
               <button class="slab" data-layer="code" role="tab" aria-selected="true" style="--w: 58%"><span class="slab__name">Code</span><span class="slab__hint">apps and APIs</span></button>
               <button class="slab" data-layer="container" role="tab" aria-selected="false" style="--w: 72%"><span class="slab__name">Container</span><span class="slab__hint">Docker</span></button>
@@ -112,7 +110,6 @@
           </div>
           <div class="stack__panel" id="stack-panel" role="tabpanel" aria-live="polite"></div>
         </div>
-        <p class="stack__hint">Tap a layer to see what I've done there.</p>
       </div>
     </section>
 
@@ -120,24 +117,30 @@
     <section class="about wrap" id="about">
       <figure class="about__photo">
         <img src="assets/img/pema.jpg" alt="Pema Dolker in a blue gho" width="800" height="1067" loading="lazy" />
-        <svg class="about__enso" viewBox="0 0 300 300" aria-hidden="true"><path d="M205 54.7 A 110 110 0 1 1 121.5 43.7" /></svg>
+        <svg class="about__enso" viewBox="0 0 300 300" aria-hidden="true">
+          <path class="ring" d="M205 245.3 A 110 110 0 1 1 256.3 178.5" />
+          <path class="ear" d="M76 70 L70 2 L132 40 Z M224 70 L230 2 L168 40 Z" />
+          <path class="whisker" d="M50 146 L-6 132 M50 160 L-10 162 M53 174 L-4 192 M250 146 L306 132 M250 160 L310 162 M247 174 L304 192" />
+        </svg>
       </figure>
       <div class="about__text">
-        <h2 class="h2">Hi, I'm Pema.</h2>
+        <h2 class="h2">About me</h2>
         <p>
-          I'm in my fourth year of a B.E. in Software Engineering at the College of Science and Technology,
-          Royal University of Bhutan.
+          I'm a final-year software engineering student at the College of Science and Technology,
+          and after four years the thing I'm surest of is how much more I want to learn. When something
+          new comes up, whether it's a framework, a cloud service or a problem nobody on the team has
+          solved yet, I want to understand it properly, not just get past it.
         </p>
         <p>
-          I've never stayed on just one side of the stack. Over four years I've built web apps, packaged them
-          into containers, shipped them through CI/CD pipelines, run them on Kubernetes, set up AWS services,
-          wired up IoT sensors and played CTFs. I like knowing how all the pieces connect, and where they can fail.
+          Not everything works the first time, and I've learned to be okay with that. When a deployment
+          fails or a project gets hard, I stay calm, keep asking questions and keep going until it works.
+          Most of what I know came from moments like those.
         </p>
         <p>
-          In 2024 I interned at GovTech Bhutan, testing systems that were still being built and doing CTF-based
-          security work. Right now I'm working through a Certified Kubernetes Administrator course.
+          I try to keep looking forward, and to bring some lightness to the teams I work with. What I want
+          from my work is simple: to keep growing, and to build things that make a real difference for
+          the people who use them.
         </p>
-        <p class="about__aside">Also: I built a blog called Wabi Sabi, and I have a soft spot for black cats. You may have met one already.</p>
       </div>
     </section>
 
@@ -217,35 +220,9 @@
           <button type="button" data-cmd="whoami">whoami</button>
           <button type="button" data-cmd="projects">projects</button>
           <button type="button" data-cmd="kubectl get pods">kubectl get pods</button>
-          <button type="button" data-cmd="nmap pema.dev">nmap pema.dev</button>
-          <button type="button" data-cmd="cat">cat</button>
+          <button type="button" data-cmd="skills">skills</button>
+          <button type="button" data-cmd="experience">experience</button>
           <button type="button" data-cmd="help">help</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= SECURITY ================= -->
-    <section class="security" id="security">
-      <div class="wrap">
-        <h2 class="h2">Breaking things, carefully.</h2>
-        <p class="security__lede">The part of software I keep coming back to: finding the weak spot before someone else does.</p>
-        <div class="sec-grid">
-          <div>
-            <h3>Network</h3>
-            <p>Enumeration and traffic analysis with Nmap and Wireshark. Metasploit practice, and hardening services with ACLs, RBAC and TLS.</p>
-          </div>
-          <div>
-            <h3>Web</h3>
-            <p>PortSwigger labs in Burp Suite: prototype pollution, XXE, password-reset flaws and template injection.</p>
-          </div>
-          <div>
-            <h3>CTF and forensics</h3>
-            <p>Inter-college CTF in 2025: CORS, CSRF, authentication bypass, API security, SSRF and insider-threat forensics.</p>
-          </div>
-          <div>
-            <h3>Cloud and clusters</h3>
-            <p>Least-privilege IAM roles and policies on AWS, and keeping Kubernetes configuration secure.</p>
-          </div>
         </div>
       </div>
     </section>
@@ -259,7 +236,7 @@
           <ol class="tl">
             <li><time>2025</time><div><h4>Cyber Month Hackathon</h4><p>Took part at GCIT.</p></div></li>
             <li><time>2025</time><div><h4>Inter-college CTF</h4><p>Web, API and forensics challenges.</p></div></li>
-            <li><time>Sep – Nov 2024</time><div><h4>Software Engineering Intern, GovTech Agency</h4><p>Tested systems still in development, reported defects and edge cases to developers, and took on CTF-based security work.</p></div></li>
+            <li><time>Sep – Nov 2024</time><div><h4>Software Engineering Intern, GovTech Agency</h4><p>Tested systems still in development, reported defects and edge cases to developers, and worked inside the team's daily development and review cycle.</p></div></li>
             <li><time>2024</time><div><h4>APNIC cyber security certificate</h4><p>Earned during a three-day APNIC workshop in Cyber Security Month at GovTech.</p></div></li>
             <li><time>2024</time><div><h4>Innovation Bootcamp, winning team</h4><p>Gedu College. A Nu. 200,000 prize and recognition for creativity.</p></div></li>
             <li><time>Award</time><div><h4>Best of CST, creativity</h4><p>Recognised by the college for creativity.</p></div></li>
@@ -268,7 +245,7 @@
         <div>
           <h3 class="h3">Education</h3>
           <ol class="tl">
-            <li><time>2023 – 2027</time><div><h4>B.E. Software Engineering (Software Security)</h4><p>College of Science and Technology, Royal University of Bhutan. Coursework across DevOps, Kubernetes, cloud on AWS, databases, web development and IoT.</p></div></li>
+            <li><time>2023 – 2027</time><div><h4>B.E. Software Engineering</h4><p>College of Science and Technology, Royal University of Bhutan. Coursework across DevOps, Kubernetes, cloud on AWS, databases, web development and IoT.</p></div></li>
             <li><time>2021 – 2022</time><div><h4>Class XI and XII, Science</h4><p>Yonten Kuenjung Academy. Physics, Chemistry, Mathematics, English and Dzongkha.</p></div></li>
           </ol>
         </div>
@@ -279,8 +256,8 @@
     <section class="contact wrap" id="contact">
       <div class="postcard">
         <div class="postcard__msg">
-          <h2 class="postcard__title">Let's build something, then try to break it.</h2>
-          <p>I'm looking for internships and graduate roles in cloud, DevOps, back-end and security. If that sounds like your team, write to me. I reply fast.</p>
+          <h2 class="postcard__title">Always learning, always looking ahead.</h2>
+          <p>I'm looking for internships and graduate roles in software engineering, cloud and DevOps, somewhere I can keep growing and contribute to work that matters. I'd love to hear from you.</p>
           <p class="postcard__sign">Pema</p>
         </div>
         <div class="postcard__addr">

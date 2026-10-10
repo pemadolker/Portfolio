@@ -52,28 +52,23 @@
   const LAYERS = {
     code: {
       title: "Code",
-      text: "Full-stack web apps: a blogging platform, live quiz rooms over WebSockets, a microservice auction platform and an Express API.",
+      text: "Web apps from the interface to the API, with real-time features and databases behind them.",
       tools: ["React", "Next.js", "Node.js", "Express", "WebSockets", "PostgreSQL", "MongoDB", "Redis", "Supabase", "Python", "TypeScript"],
     },
     container: {
       title: "Container",
-      text: "I package each part of an app into its own image. I've containerised a React, Node and PostgreSQL app, and run the auction platform's services together with Compose.",
+      text: "Packaging each part of an app into its own container so it runs the same everywhere.",
       tools: ["Docker", "Docker Compose", "Linux", "Bash"],
     },
     cluster: {
       title: "Cluster",
-      text: "Learned Kubernetes in DSO202: pods, deployments, replicas and YAML manifests, plus dev, staging and production overlays with Kustomize on a three-node kind cluster. Now working through a CKA course.",
+      text: "Running and scaling containers with Kubernetes, with separate setups for each environment.",
       tools: ["Kubernetes", "kubectl", "Kustomize", "Helm", "kind", "Minikube"],
     },
     cloud: {
       title: "Cloud",
-      text: "AWS through DSO303: ECS on Fargate, IAM roles and policies, VPC networking and CloudWatch. I've shipped apps to Render and Vercel, with CI/CD on GitHub Actions and Jenkins.",
-      tools: ["AWS IAM", "ECS / Fargate", "VPC", "S3", "DynamoDB", "Elastic Beanstalk", "CloudWatch", "GitHub Actions", "Jenkins", "Render", "Vercel"],
-    },
-    security: {
-      title: "Security, around every layer",
-      text: "CTFs, PortSwigger labs, least-privilege IAM and secure configuration. Every layer inside this frame is something I also try to break.",
-      tools: ["Burp Suite", "Nmap", "Wireshark", "Metasploit", "ELK Stack"],
+      text: "Deploying to the cloud, with pipelines that build, test and ship every change.",
+      tools: ["AWS", "ECS / Fargate", "IAM", "S3", "DynamoDB", "CloudWatch", "GitHub Actions", "Jenkins", "Render", "Vercel"],
     },
   };
   const panel = $("#stack-panel");
@@ -82,7 +77,6 @@
     const L = LAYERS[name];
     if (!L || !panel) return;
     tabs.forEach((b) => b.setAttribute("aria-selected", String(b.dataset.layer === name)));
-    $(".stack__frame").classList.toggle("is-active", name === "security");
     panel.innerHTML = `<h3>${L.title}</h3><p>${L.text}</p><ul class="tools">${L.tools.map((t) => `<li>${t}</li>`).join("")}</ul>`;
   };
   tabs.forEach((b) => b.addEventListener("click", () => setLayer(b.dataset.layer)));
@@ -185,7 +179,7 @@
         print('<span class="a">Pema Dolker</span>');
         print("Final-year B.E. Software Engineering student");
         print("College of Science and Technology, Royal University of Bhutan");
-        print('Into: <span class="k">cloud</span>, <span class="k">DevOps</span>, <span class="k">security</span>, <span class="k">full-stack</span>');
+        print('Into: <span class="k">cloud</span>, <span class="k">DevOps</span>, <span class="k">full-stack</span>');
       },
     },
     skills: {
@@ -198,7 +192,6 @@
           ["devops", "Docker, Compose, Kubernetes, Kustomize, Helm"],
           ["cloud", "AWS (IAM, ECS/Fargate, VPC, S3), Render, Vercel"],
           ["ci/cd", "GitHub Actions, Jenkins"],
-          ["security", "Burp Suite, Nmap, Wireshark, Metasploit"],
         ].forEach(([k, v]) => print(`<span class="k">${k.padEnd(10)}</span>${v}`));
       },
     },
@@ -218,8 +211,8 @@
       run: () => {
         print('<span class="a">Software Engineering Intern</span>  <span class="d">Sep – Nov 2024</span>');
         print("GovTech Agency, Bhutan");
-        print("Tested in-development systems, reported defects and edge cases,");
-        print("and took on CTF-based security work.");
+        print("Tested systems still in development, reported defects and edge cases,");
+        print("and worked inside the team's daily development cycle.");
       },
     },
     "kubectl get pods": {
@@ -231,7 +224,6 @@
           ["auction-platform", "1/1", "Running", "0", "6mo"],
           ["quiz-rooms", "1/1", "Running", "0", "1y"],
           ["cka-prep", "1/1", "Running", "3", "2mo"],
-          ["black-cat", "1/1", "Running", "0", "∞"],
           ["sleep", "0/1", "CrashLoopBackOff", "42", "4y"],
         ].forEach(([n, r, s, rs, a]) =>
           row(`${n.padEnd(18)}${r.padEnd(7)}<span class="${s === "Running" ? "g" : "r"}">${s.padEnd(18)}</span>${rs.padEnd(10)}${a}`)
@@ -239,7 +231,7 @@
       },
     },
     "nmap pema.dev": {
-      desc: "scan me (politely)",
+      hidden: true,
       run: async () => {
         print('<span class="d">Starting Nmap scan against pema.dev ...</span>');
         await wait(350);
@@ -258,20 +250,11 @@
         print('<span class="d">Done: 1 host up, 0 vulnerabilities found (still looking).</span>');
       },
     },
-    cat: {
-      desc: "there is a cat",
-      run: () => {
-        row(" /\\_/\\");
-        row("( o.o )   mrrp.");
-        row(' > ^ <    try <span class="k">cat about.txt</span>');
-      },
-    },
     "cat about.txt": {
-      hidden: true,
+      desc: "a little about me",
       run: () => {
-        print("Software engineering student from Bhutan. I build across the stack,");
-        print("from code to containers to the cloud, and look for where it breaks.");
-        print('Wabi-sabi fan. Black-cat person.');
+        print("Final-year software engineering student from Bhutan.");
+        print("Curious, always learning, and steady when things get hard.");
       },
     },
     contact: {
@@ -306,7 +289,7 @@
     date: { hidden: true, run: () => print(new Date().toString()) },
     sudo: { hidden: true, run: () => print('Usage: <span class="k">sudo hire-pema</span>') },
   };
-  const ALIASES = { "?": "help", man: "help", pods: "kubectl get pods", nmap: "nmap pema.dev", hire: "sudo hire-pema", resume: "cv", exit: "clear", about: "cat about.txt", meow: "cat" };
+  const ALIASES = { "?": "help", man: "help", pods: "kubectl get pods", nmap: "nmap pema.dev", hire: "sudo hire-pema", resume: "cv", exit: "clear", about: "cat about.txt" };
 
   async function exec(raw) {
     const cmd = raw.trim().replace(/\s+/g, " ");
