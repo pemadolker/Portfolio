@@ -385,3 +385,6 @@ html:not(.no-intro):not(.revealed) .stack { opacity: 0; transform: translateY(18
   *, *::before, *::after { transition-duration: 0s !important; }
   .perch .cat__eyes, .perch .cat__tail { animation: none !important; }
 }
+
+/* an odd card out fills the row */
+.projects .proj:last-child:nth-child(odd) { grid-column: 1 / -1; }

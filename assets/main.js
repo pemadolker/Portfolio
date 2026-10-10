@@ -179,7 +179,7 @@
         print('<span class="a">Pema Dolker</span>');
         print("Final-year B.E. Software Engineering student");
         print("College of Science and Technology, Royal University of Bhutan");
-        print('Into: <span class="k">cloud</span>, <span class="k">DevOps</span>, <span class="k">full-stack</span>');
+        print('Into: <span class="k">cloud</span>, <span class="k">DevOps</span>, <span class="k">security</span>, <span class="k">full-stack</span>');
       },
     },
     skills: {
@@ -192,6 +192,7 @@
           ["devops", "Docker, Compose, Kubernetes, Kustomize, Helm"],
           ["cloud", "AWS (IAM, ECS/Fargate, VPC, S3), Render, Vercel"],
           ["ci/cd", "GitHub Actions, Jenkins"],
+          ["security", "Burp Suite, Nmap, Wireshark, Metasploit"],
         ].forEach(([k, v]) => print(`<span class="k">${k.padEnd(10)}</span>${v}`));
       },
     },
@@ -203,7 +204,6 @@
         row('<span class="a">wabi-sabi</span>          blog  <a href="https://wabisabi-blog.vercel.app/" target="_blank" rel="noopener">wabisabi-blog.vercel.app</a>');
         row('<span class="a">quiz-live</span>          Kahoot-style  <a href="https://github.com/pemadolker/SS2025_SWE201_Kahoot" target="_blank" rel="noopener">repo</a>');
         row('<span class="a">render-deploy</span>      Express + Postgres, GitHub Actions');
-        row('<span class="a">waste-monitor</span>      sensor-based IoT');
       },
     },
     experience: {
@@ -211,8 +211,8 @@
       run: () => {
         print('<span class="a">Software Engineering Intern</span>  <span class="d">Sep – Nov 2024</span>');
         print("GovTech Agency, Bhutan");
-        print("Tested systems still in development, reported defects and edge cases,");
-        print("and worked inside the team's daily development cycle.");
+        print("Tested in-development systems, reported defects and edge cases,");
+        print("and took on CTF-based security work.");
       },
     },
     "kubectl get pods": {
@@ -224,6 +224,7 @@
           ["auction-platform", "1/1", "Running", "0", "6mo"],
           ["quiz-rooms", "1/1", "Running", "0", "1y"],
           ["cka-prep", "1/1", "Running", "3", "2mo"],
+          ["black-cat", "1/1", "Running", "0", "∞"],
           ["sleep", "0/1", "CrashLoopBackOff", "42", "4y"],
         ].forEach(([n, r, s, rs, a]) =>
           row(`${n.padEnd(18)}${r.padEnd(7)}<span class="${s === "Running" ? "g" : "r"}">${s.padEnd(18)}</span>${rs.padEnd(10)}${a}`)
@@ -231,7 +232,7 @@
       },
     },
     "nmap pema.dev": {
-      hidden: true,
+      desc: "scan me (politely)",
       run: async () => {
         print('<span class="d">Starting Nmap scan against pema.dev ...</span>');
         await wait(350);
@@ -250,11 +251,20 @@
         print('<span class="d">Done: 1 host up, 0 vulnerabilities found (still looking).</span>');
       },
     },
-    "cat about.txt": {
-      desc: "a little about me",
+    cat: {
+      desc: "there is a cat",
       run: () => {
-        print("Final-year software engineering student from Bhutan.");
-        print("Curious, always learning, and steady when things get hard.");
+        row(" /\\_/\\");
+        row("( o.o )   mrrp.");
+        row(' > ^ <    try <span class="k">cat about.txt</span>');
+      },
+    },
+    "cat about.txt": {
+      hidden: true,
+      run: () => {
+        print("Software engineering student from Bhutan. I build across the stack,");
+        print("from code to containers to the cloud, and look for where it breaks.");
+        print('Wabi-sabi fan. Black-cat person.');
       },
     },
     contact: {
@@ -289,7 +299,7 @@
     date: { hidden: true, run: () => print(new Date().toString()) },
     sudo: { hidden: true, run: () => print('Usage: <span class="k">sudo hire-pema</span>') },
   };
-  const ALIASES = { "?": "help", man: "help", pods: "kubectl get pods", nmap: "nmap pema.dev", hire: "sudo hire-pema", resume: "cv", exit: "clear", about: "cat about.txt" };
+  const ALIASES = { "?": "help", man: "help", pods: "kubectl get pods", nmap: "nmap pema.dev", hire: "sudo hire-pema", resume: "cv", exit: "clear", about: "cat about.txt", meow: "cat" };
 
   async function exec(raw) {
     const cmd = raw.trim().replace(/\s+/g, " ");
