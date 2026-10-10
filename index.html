@@ -4,47 +4,56 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pema Dolker</title>
-  <meta name="description" content="Pema Dolker, final-year Software Engineering student (Software Security) at the College of Science and Technology, Bhutan. Code, containers, Kubernetes, AWS and security." />
+  <meta name="description" content="Pema Dolker, final-year Software Engineering student at the College of Science and Technology, Bhutan. Code, containers, Kubernetes, AWS and security." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
   <script>
-    // play the unlock intro once per visit
-    try { if (sessionStorage.getItem("unlocked") || matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("no-intro"); } catch (e) {}
+    try { if (sessionStorage.getItem("seen-intro") || matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("no-intro"); } catch (e) {}
   </script>
 </head>
 
 <body>
-  <!-- ================= INTRO: the unlock ================= -->
+  <!-- shared drawings: a brush filter and the black cat -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="brush" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" />
+      <feDisplacementMap in="SourceGraphic" scale="7" />
+    </filter>
+  </svg>
+
+  <!-- ================= INTRO: ensō + cat ================= -->
   <div class="intro" id="intro" aria-hidden="true">
     <div class="intro__stage">
-      <svg class="lock" viewBox="0 0 200 240">
-        <path class="lock__shackle" d="M58 112 V74 a42 42 0 0 1 84 0 V112" />
-        <rect class="lock__body" x="26" y="100" width="148" height="124" rx="26" />
-        <circle class="lock__hole" cx="100" cy="150" r="13" />
-        <rect class="lock__hole" x="94" y="154" width="12" height="30" rx="5" />
+      <svg class="enso" viewBox="0 0 300 300">
+        <path class="enso__stroke enso__stroke--a" d="M205 54.7 A 110 110 0 1 1 121.5 43.7" />
+        <path class="enso__stroke enso__stroke--b" d="M203 60 A 104 104 0 1 1 124 48" />
       </svg>
-      <svg class="key" viewBox="0 0 220 60">
-        <circle cx="30" cy="30" r="24" />
-        <circle class="key__eye" cx="30" cy="30" r="10" />
-        <rect x="50" y="24" width="160" height="12" rx="4" />
-        <rect x="170" y="36" width="10" height="14" rx="2" />
-        <rect x="190" y="36" width="10" height="20" rx="2" />
-      </svg>
-      <span class="burst"></span>
+      <svg class="cat intro__cat" viewBox="0 0 120 140">
+      <path class="cat__tail" d="M86 130 C 112 128, 120 100, 103 86" />
+      <path class="cat__body" d="M28 136 C 20 104, 34 74, 60 72 C 86 74, 100 104, 92 136 Z" />
+      <path class="cat__body" d="M34 40 L38 10 L56 28 Z M86 40 L82 10 L64 28 Z" />
+      <circle class="cat__body" cx="60" cy="50" r="29" />
+      <g class="cat__eyes">
+        <ellipse class="cat__eye" cx="48" cy="50" rx="6.5" ry="7.5" />
+        <ellipse class="cat__eye" cx="72" cy="50" rx="6.5" ry="7.5" />
+        <g class="cat__pupils">
+          <ellipse cx="48" cy="50" rx="2.2" ry="5.5" />
+          <ellipse cx="72" cy="50" rx="2.2" ry="5.5" />
+        </g>
+      </g>
+      <path class="cat__nose" d="M57 61 L63 61 L60 64.5 Z" />
+    </svg>
     </div>
-    <p class="intro__text"><span class="t1">unlocking pema.dev</span><span class="t2">access granted</span></p>
+    <p class="intro__text">Kuzuzangpo la</p>
     <button class="intro__skip" id="intro-skip" type="button">skip</button>
   </div>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="top wrap">
-    <a href="#top" class="logo" aria-label="Pema Dolker, back to top">
-      <svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5 11V7a5 5 0 0 1 10 0" /><rect x="2" y="10" width="16" height="12" rx="4" /></svg>
-      pema dolker
-    </a>
+    <a href="#top" class="logo">Pema Dolker</a>
     <nav aria-label="Main">
       <ul class="top__links">
         <li><a href="#work">Work</a></li>
@@ -59,30 +68,46 @@
     <!-- ================= HERO ================= -->
     <section class="hero wrap" id="top">
       <div class="hero__text">
-        <h1 class="hero__name"><span>Pema</span> <span>Dolker</span></h1>
+        <p class="hero__kicker">Software engineer in the making, Bhutan</p>
+        <h1 class="hero__name">Pema<br />Dolker</h1>
         <p class="hero__lede">
-          Final-year software engineering student in Bhutan, majoring in software security.
-          I work across the whole stack, from the code to the container to the cloud,
-          and at every layer I ask how it could be broken.
+          I build across the whole stack, from the code to the container to the cloud,
+          and I like finding the places where things quietly break.
+          Final-year at the College of Science and Technology.
         </p>
         <p class="hero__actions">
-          <a href="#work" class="btn btn--dark">See my work</a>
+          <a href="#work" class="btn btn--ink">See my work</a>
           <a href="assets/Pema_Dolker_CV.pdf" class="btn btn--line" download>Download CV</a>
         </p>
       </div>
 
       <div class="stack" id="stack">
+        <button class="perch" id="perch" type="button" aria-label="Pet the cat">
+          <svg class="cat perch__cat" viewBox="0 0 120 140">
+      <path class="cat__tail" d="M86 130 C 112 128, 120 100, 103 86" />
+      <path class="cat__body" d="M28 136 C 20 104, 34 74, 60 72 C 86 74, 100 104, 92 136 Z" />
+      <path class="cat__body" d="M34 40 L38 10 L56 28 Z M86 40 L82 10 L64 28 Z" />
+      <circle class="cat__body" cx="60" cy="50" r="29" />
+      <g class="cat__eyes">
+        <ellipse class="cat__eye" cx="48" cy="50" rx="6.5" ry="7.5" />
+        <ellipse class="cat__eye" cx="72" cy="50" rx="6.5" ry="7.5" />
+        <g class="cat__pupils">
+          <ellipse cx="48" cy="50" rx="2.2" ry="5.5" />
+          <ellipse cx="72" cy="50" rx="2.2" ry="5.5" />
+        </g>
+      </g>
+      <path class="cat__nose" d="M57 61 L63 61 L60 64.5 Z" />
+    </svg>
+          <span class="perch__say" aria-hidden="true">mrrp</span>
+        </button>
         <div class="stack__card">
-          <div class="stack__frame" data-layer="security">
-            <button class="stack__sec" data-layer="security" role="tab" aria-selected="false">
-              <svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5 11V7a5 5 0 0 1 10 0" /><rect x="2" y="10" width="16" height="12" rx="4" /></svg>
-              security, around every layer
-            </button>
+          <div class="stack__frame">
+            <button class="stack__sec" data-layer="security" role="tab" aria-selected="false">security, around every layer</button>
             <div class="slabs" role="tablist" aria-label="Layers I work across">
-              <button class="slab" data-layer="code" role="tab" aria-selected="true" style="--w: 58%"><span class="slab__name">Code</span><span class="slab__hint">apps &amp; APIs</span></button>
+              <button class="slab" data-layer="code" role="tab" aria-selected="true" style="--w: 58%"><span class="slab__name">Code</span><span class="slab__hint">apps and APIs</span></button>
               <button class="slab" data-layer="container" role="tab" aria-selected="false" style="--w: 72%"><span class="slab__name">Container</span><span class="slab__hint">Docker</span></button>
               <button class="slab" data-layer="cluster" role="tab" aria-selected="false" style="--w: 86%"><span class="slab__name">Cluster</span><span class="slab__hint">Kubernetes</span></button>
-              <button class="slab" data-layer="cloud" role="tab" aria-selected="false" style="--w: 100%"><span class="slab__name">Cloud</span><span class="slab__hint">AWS &amp; CI/CD</span></button>
+              <button class="slab" data-layer="cloud" role="tab" aria-selected="false" style="--w: 100%"><span class="slab__name">Cloud</span><span class="slab__hint">AWS and CI/CD</span></button>
             </div>
           </div>
           <div class="stack__panel" id="stack-panel" role="tabpanel" aria-live="polite"></div>
@@ -93,23 +118,26 @@
 
     <!-- ================= ABOUT ================= -->
     <section class="about wrap" id="about">
-      <img class="about__photo" src="assets/img/pema.jpg" alt="Pema Dolker in a blue gho" width="800" height="1067" loading="lazy" />
+      <figure class="about__photo">
+        <img src="assets/img/pema.jpg" alt="Pema Dolker in a blue gho" width="800" height="1067" loading="lazy" />
+        <svg class="about__enso" viewBox="0 0 300 300" aria-hidden="true"><path d="M205 54.7 A 110 110 0 1 1 121.5 43.7" /></svg>
+      </figure>
       <div class="about__text">
         <h2 class="h2">Hi, I'm Pema.</h2>
         <p>
           I'm in my fourth year of a B.E. in Software Engineering at the College of Science and Technology,
-          Royal University of Bhutan, majoring in Software Security.
+          Royal University of Bhutan.
         </p>
         <p>
-          I've never stuck to just the front end or the back end. Over four years I've built web apps,
-          packaged them into containers, deployed them through CI/CD pipelines, run them on Kubernetes,
-          set up AWS services, wired up IoT sensors, and played CTFs. I like knowing how all the pieces connect,
-          and where they can fail.
+          I've never stayed on just one side of the stack. Over four years I've built web apps, packaged them
+          into containers, shipped them through CI/CD pipelines, run them on Kubernetes, set up AWS services,
+          wired up IoT sensors and played CTFs. I like knowing how all the pieces connect, and where they can fail.
         </p>
         <p>
-          In 2024 I interned at GovTech Bhutan, testing systems that were still being built and doing CTF-based security work.
-          Right now I'm working through a Certified Kubernetes Administrator course.
+          In 2024 I interned at GovTech Bhutan, testing systems that were still being built and doing CTF-based
+          security work. Right now I'm working through a Certified Kubernetes Administrator course.
         </p>
+        <p class="about__aside">Also: I built a blog called Wabi Sabi, and I have a soft spot for black cats. You may have met one already.</p>
       </div>
     </section>
 
@@ -121,11 +149,11 @@
         <article class="proj proj--big">
           <p class="proj__layers"><span>code</span><span>container</span></p>
           <h3>Bhutan Online Auction Platform</h3>
-          <p>An online auction platform built as microservices for my SWE303 module. Each service runs in its own Docker container, and Docker Compose brings them all up together.</p>
+          <p>An online auction platform built as microservices for SWE303. Each service runs in its own Docker container, and Docker Compose brings them all up together.</p>
           <p class="proj__stack">Microservices, Docker, Docker Compose</p>
         </article>
 
-        <article class="proj proj--big proj--pink">
+        <article class="proj proj--big proj--tint">
           <p class="proj__layers"><span>container</span><span>cluster</span><span>cloud</span></p>
           <h3>Containerised app with automated delivery</h3>
           <p>A React, Node and PostgreSQL app, with every part containerised. CI/CD runs on GitHub Actions and Jenkins, and a related workload ran on a three-node Kubernetes cluster.</p>
@@ -134,10 +162,10 @@
 
         <article class="proj">
           <p class="proj__layers"><span>code</span><span>cloud</span></p>
-          <h3>Sakura Notes</h3>
+          <h3>Wabi Sabi blog</h3>
           <p>A full-stack blogging platform with Google sign-in and social features, on Supabase and Vercel.</p>
           <p class="proj__stack">React, Vite, Supabase, Vercel</p>
-          <a class="arrow-link" href="https://wabisabi-blog.vercel.app/" target="_blank" rel="noopener">Visit the live blog</a>
+          <a class="text-link" href="https://wabisabi-blog.vercel.app/" target="_blank" rel="noopener">Visit the live blog</a>
         </article>
 
         <article class="proj">
@@ -145,12 +173,12 @@
           <h3>Live quiz rooms</h3>
           <p>A Kahoot-style quiz. The host opens a room with a unique join code and players join live over WebSockets.</p>
           <p class="proj__stack">React, Node.js, WebSockets</p>
-          <a class="arrow-link" href="https://github.com/pemadolker/SS2025_SWE201_Kahoot" target="_blank" rel="noopener">Read the code</a>
+          <a class="text-link" href="https://github.com/pemadolker/SS2025_SWE201_Kahoot" target="_blank" rel="noopener">Read the code</a>
         </article>
 
         <article class="proj">
           <p class="proj__layers"><span>code</span><span>cloud</span></p>
-          <h3>Full-stack deploy with Render</h3>
+          <h3>Full-stack deploy on Render</h3>
           <p>For DSO101: an Express and PostgreSQL backend plus a separate frontend, deployed as two Render Blueprint services, with GitHub Actions for CI/CD.</p>
           <p class="proj__stack">Express, PostgreSQL, Render, GitHub Actions</p>
         </article>
@@ -166,7 +194,8 @@
       <details class="older">
         <summary>Earlier projects</summary>
         <ul>
-          <li><strong>Pokédex</strong>: Search Pokémon, view their stats and track the ones you've caught. Built with React, PokeAPI and Zustand. <a href="https://fluffy-sunburst-171efc.netlify.app/" target="_blank" rel="noopener">Live</a> <a href="https://github.com/pemadolker/02230294web101_PA2" target="_blank" rel="noopener">Code</a></li>
+          <li><strong>Innovation Bootcamp design</strong>: I led the page design and user flow for our winning team. <a href="https://www.figma.com/proto/vQibGRZ7VOz0KGrjt5HKn8/Untitled?node-id=105-2&amp;starting-point-node-id=105%3A2&amp;t=0EX2ZqpWlXs19RJQ-1" target="_blank" rel="noopener">Prototype</a></li>
+          <li><strong>Pokédex</strong>: Search Pokémon, view their stats and track the ones you've caught. React, PokeAPI and Zustand. <a href="https://fluffy-sunburst-171efc.netlify.app/" target="_blank" rel="noopener">Live</a> <a href="https://github.com/pemadolker/02230294web101_PA2" target="_blank" rel="noopener">Code</a></li>
           <li><strong>Tellonym clone</strong>: A team build of an anonymous messaging app. I built the inbox. React and Hono. <a href="https://github.com/C-gyeltshen/FrontEnd_tellonym" target="_blank" rel="noopener">Front end</a> <a href="https://github.com/C-gyeltshen/BackEnd_Tell0nym" target="_blank" rel="noopener">Back end</a></li>
         </ul>
       </details>
@@ -176,19 +205,20 @@
     <section class="termsec wrap" aria-label="Interactive terminal">
       <div class="termsec__intro">
         <h2 class="h2">Or ask the terminal.</h2>
-        <p>It's a real one, sort of. Type <code>help</code>, or tap a command.</p>
+        <p>Type a command and press Enter, or tap one below. Try <code>help</code>.</p>
       </div>
       <div class="term" id="terminal">
         <div class="term__body" id="term-body" role="log" aria-live="polite"></div>
         <form class="term__input" id="term-form" autocomplete="off">
           <label for="term-in" class="term__prompt">pema@cst:~$</label>
-          <input id="term-in" type="text" spellcheck="false" autocapitalize="off" aria-label="Type a command" />
+          <input id="term-in" name="cmd" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" enterkeyhint="send" aria-label="Type a command" />
         </form>
         <div class="term__chips" aria-label="Quick commands">
           <button type="button" data-cmd="whoami">whoami</button>
+          <button type="button" data-cmd="projects">projects</button>
           <button type="button" data-cmd="kubectl get pods">kubectl get pods</button>
           <button type="button" data-cmd="nmap pema.dev">nmap pema.dev</button>
-          <button type="button" data-cmd="sudo hire-pema">sudo hire-pema</button>
+          <button type="button" data-cmd="cat">cat</button>
           <button type="button" data-cmd="help">help</button>
         </div>
       </div>
@@ -197,7 +227,8 @@
     <!-- ================= SECURITY ================= -->
     <section class="security" id="security">
       <div class="wrap">
-        <h2 class="h2">Security is my major, so I practise it.</h2>
+        <h2 class="h2">Breaking things, carefully.</h2>
+        <p class="security__lede">The part of software I keep coming back to: finding the weak spot before someone else does.</p>
         <div class="sec-grid">
           <div>
             <h3>Network</h3>
@@ -237,22 +268,9 @@
         <div>
           <h3 class="h3">Education</h3>
           <ol class="tl">
-            <li><time>2023 – 2027</time><div><h4>B.E. Software Engineering (Software Security)</h4><p>College of Science and Technology, Royal University of Bhutan</p></div></li>
+            <li><time>2023 – 2027</time><div><h4>B.E. Software Engineering (Software Security)</h4><p>College of Science and Technology, Royal University of Bhutan. Coursework across DevOps, Kubernetes, cloud on AWS, databases, web development and IoT.</p></div></li>
             <li><time>2021 – 2022</time><div><h4>Class XI and XII, Science</h4><p>Yonten Kuenjung Academy. Physics, Chemistry, Mathematics, English and Dzongkha.</p></div></li>
           </ol>
-
-          <h3 class="h3 modules__title">Modules that shaped me</h3>
-          <ul class="modules">
-            <li><span>DSO101</span>DevOps and software delivery</li>
-            <li><span>DSO202</span>Kubernetes and container orchestration</li>
-            <li><span>DSO303</span>Cloud-native solution design on AWS</li>
-            <li><span>SWE303</span>Software engineering project: the auction platform</li>
-            <li><span>WEB303</span>Web development</li>
-            <li><span>DBS302</span>Databases</li>
-            <li><span>SWE302</span>Software engineering</li>
-            <li><span>IoT</span>Smart integrated systems</li>
-          </ul>
-          <p class="modules__now">This semester: cloud computing, IoT, software testing, project management and entrepreneurship.</p>
         </div>
       </div>
     </section>
@@ -288,12 +306,12 @@
   </main>
 
   <footer class="foot wrap">
-    <p>© <span id="year">2026</span> Pema Dolker</p>
+    <p>© <span id="year">2026</span> Pema Dolker, Phuentsholing</p>
     <p class="foot__links">
       <a href="https://www.instagram.com/dov1lker/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://x.com/Dolker24" target="_blank" rel="noopener">X</a>
       <a href="assets/Pema_Dolker_CV.pdf" download>CV</a>
-      <button type="button" id="replay" class="foot__replay">Replay the unlock</button>
+      <button type="button" id="replay" class="foot__replay">Replay the intro</button>
     </p>
   </footer>
 
